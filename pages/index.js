@@ -6,7 +6,10 @@ export default function Home() {
     <Fragment>
       <Head>
         <title>Karya Ilmiah Remaja SMP Negeri 13</title>
-        <link rel="icon" href="/favicon.ico" />
+        <meta
+          name="description"
+          content="Website resmi Karya Ilmiah Remaja SMPN 13 Bekasi. Karya Ilmiah Remaja ini adalah ekskul yang bertemakan tentang Sains dan Ilmu Pengetahuan Umum"
+        />
       </Head>
     </Fragment>
   );
