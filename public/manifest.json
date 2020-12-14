@@ -1,6 +1,9 @@
 {
-  "name": "Sekilas 13",
+  "name": "Kir SMP Negeri 13 Kota Bekasi",
   "short_name": "Sekilas 13",
+  "description": "Website resmi ekstrakurikuler Karya Ilmiah Remaja SMP Negeri 13 Bekasi",
+  "scope": "/",
+  "start_url": "/",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -14,6 +17,6 @@
     }
   ],
   "theme_color": "#f0efeb",
-  "background_color": "#f0efeb",
+  "background_color": "#ffffff",
   "display": "standalone"
 }
