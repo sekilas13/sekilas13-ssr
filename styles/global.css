@@ -1,0 +1,12 @@
+html {
+  font-family: "Roboto", sans-serif;
+  scroll-behavior: smooth;
+}
+
+.navbar-custom {
+  background-color: #333533;
+}
+
+.navbar-custom .navbar-brand {
+  color: white;
+}

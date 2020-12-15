@@ -1,12 +1,24 @@
 import Head from "next/head";
 import { Fragment } from "react";
+import dynamic from "next/dynamic";
 import useDarkMode from "use-dark-mode";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "../config/GlobalStyles";
 import { lightTheme, darkTheme } from "../config/theme";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../styles/global.css";
+
+const Navigasi = dynamic(() => import("../components/Navigasi"), {
+  loading: () => (
+    <nav
+      className="navbar navbar-expand-lg navbar-light bg-light sticky-top"
+      style={{ height: "56px" }}
+    />
+  ),
+});
 
 function MyApp({ Component, pageProps }) {
-  const darkMode = useDarkMode(true);
+  const darkMode = useDarkMode(false);
   const theme = darkMode ? darkTheme : lightTheme;
 
   return (
@@ -19,7 +31,8 @@ function MyApp({ Component, pageProps }) {
         <meta name="theme-color" content={darkMode ? "#323234" : "#f0efeb"} />
       </Head>
       <ThemeProvider theme={theme}>
-        <GlobalStyles />
+        {/* <GlobalStyles /> */}
+        <Navigasi darkMode={darkMode} />
         <Component {...pageProps} />
       </ThemeProvider>
     </Fragment>
