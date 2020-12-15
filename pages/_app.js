@@ -15,7 +15,11 @@ const Navigasi = dynamic(() => import("../components/Navigasi"), {
       style={{ height: "56px" }}
     >
       <div className="container">
-        <a href="#" class="navbar-brand" onClick={(e) => e.preventDefault()}>
+        <a
+          href="#"
+          className="navbar-brand"
+          onClick={(e) => e.preventDefault()}
+        >
           KIR
         </a>
       </div>
@@ -38,7 +42,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="theme-color" content={darkMode ? "#323234" : "#f0efeb"} />
       </Head>
       <ThemeProvider theme={theme}>
-        {/* <GlobalStyles /> */}
+        <GlobalStyles />
         <Navigasi darkMode={darkMode} />
         <Component {...pageProps} />
       </ThemeProvider>
