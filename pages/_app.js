@@ -2,6 +2,7 @@ import Head from "next/head";
 import { Fragment } from "react";
 import useDarkMode from "use-dark-mode";
 import { ThemeProvider } from "styled-components";
+import { GlobalStyles } from "../config/GlobalStyles";
 import { lightTheme, darkTheme } from "../config/theme";
 
 function MyApp({ Component, pageProps }) {
@@ -18,6 +19,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="theme-color" content={darkMode ? "#323234" : "#f0efeb"} />
       </Head>
       <ThemeProvider theme={theme}>
+        <GlobalStyles />
         <Component {...pageProps} />
       </ThemeProvider>
     </Fragment>
