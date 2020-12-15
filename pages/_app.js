@@ -50,13 +50,13 @@ function MyApp({ Component, pageProps }) {
             "Website resmi Karya Ilmiah Remaja SMPN 13 Bekasi. Karya Ilmiah Remaja ini adalah ekskul yang bertemakan tentang Sains dan Ilmu Pengetahuan Umum",
           images: [
             {
-              url: process.env.URL + "/op-big.png",
+              url: process.env.URL + "/open-graph/og-big.png",
               width: 1200,
               height: 630,
               alt: "KIR Open Graph Beeg",
             },
             {
-              url: process.env.URL + "/op-small.png",
+              url: process.env.URL + "/open-graph/og-small.png",
               width: 484,
               height: 484,
               alt: "KIR Open Graph Smol",
