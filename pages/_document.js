@@ -8,7 +8,7 @@ export default class Root extends Document {
 
   render() {
     return (
-      <Html>
+      <Html lang="id">
         <Head>
           <link
             rel="apple-touch-icon"

@@ -15,6 +15,7 @@ const Navigasi = dynamic(() => import("../components/Navigasi"), {
       style={{ height: "56px" }}
     />
   ),
+  ssr: false,
 });
 
 function MyApp({ Component, pageProps }) {
