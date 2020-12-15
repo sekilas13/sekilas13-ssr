@@ -1,5 +1,7 @@
-import { ThemeProvider } from "styled-components";
+import Head from "next/head";
+import { Fragment } from "react";
 import useDarkMode from "use-dark-mode";
+import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "../config/theme";
 
 function MyApp({ Component, pageProps }) {
@@ -7,9 +9,18 @@ function MyApp({ Component, pageProps }) {
   const theme = darkMode ? darkTheme : lightTheme;
 
   return (
-    <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
-    </ThemeProvider>
+    <Fragment>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="apple-mobile-web-app-title" content="Sekilas 13" />
+        <meta name="application-name" content="Sekilas 13" />
+        <meta name="msapplication-TileColor" content="#2b5797" />
+        <meta name="theme-color" content={darkMode ? "#323234" : "#f0efeb"} />
+      </Head>
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
+    </Fragment>
   );
 }
 
