@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "check-unused": "node scripts/detect-unused.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
@@ -26,5 +27,8 @@
     "react-visibility-sensor": "^5.1.1",
     "styled-components": "^5.2.1",
     "use-dark-mode": "^2.3.1"
+  },
+  "devDependencies": {
+    "madge": "^3.12.0"
   }
 }
