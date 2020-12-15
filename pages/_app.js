@@ -13,7 +13,13 @@ const Navigasi = dynamic(() => import("../components/Navigasi"), {
     <nav
       className="navbar navbar-expand-lg navbar-light bg-light sticky-top"
       style={{ height: "56px" }}
-    />
+    >
+      <div className="container">
+        <a href="#" class="navbar-brand" onClick={(e) => e.preventDefault()}>
+          KIR
+        </a>
+      </div>
+    </nav>
   ),
   ssr: false,
 });
