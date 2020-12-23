@@ -12,6 +12,7 @@
     "next": "10.0.4",
     "react": "17.0.1",
     "react-bootstrap": "^1.4.0",
-    "react-dom": "17.0.1"
+    "react-dom": "17.0.1",
+    "simple-react-lightbox": "^3.5.1"
   }
 }
