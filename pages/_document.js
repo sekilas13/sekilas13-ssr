@@ -9,7 +9,10 @@ export default class Root extends Document {
   render() {
     return (
       <Html lang="id">
-        <Head></Head>
+        <Head>
+          <link rel="icon" href="/favicon.ico" />
+          <link rel="apple-touch-icon" href="/logo192.png" />
+        </Head>
         <body>
           <Main />
           <NextScript />
