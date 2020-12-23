@@ -1,7 +1,8 @@
 import SimpleReactLightbox, { SRLWrapper } from "simple-react-lightbox";
-import { Row, Container, Col, Image } from "react-bootstrap";
+import { Row, Container, Col } from "react-bootstrap";
 import gambar from "../../assets/data/Gambar";
 import styles from "../../styles/Gambar.module.css";
+import Image from "next/image";
 
 export default function Gambar() {
   return (
