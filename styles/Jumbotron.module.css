@@ -9,7 +9,6 @@
 
 .gambar {
   width: 20%;
-  transform: scale(2.2);
 }
 
 .hasatu {
@@ -29,7 +28,6 @@
 
   .gambar {
     width: 35%;
-    transform: scale(1.4);
   }
 
   .hasatu {
@@ -48,7 +46,6 @@
 
   .gambar {
     width: 29%;
-    transform: scale(1.6);
   }
 }
 
@@ -59,7 +56,6 @@
 
   .gambar {
     width: 28%;
-    transform: scale(1.8);
   }
 }
 
@@ -70,6 +66,5 @@
 
   .gambar {
     width: 22%;
-    transform: scale(2);
   }
 }
