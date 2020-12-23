@@ -1,5 +1,5 @@
 import { Jumbotron, Container, Row } from "react-bootstrap";
-import styles from "../../styles/Jumbotron.module.css";
+import styles from "../../styles/main/Jumbotron.module.css";
 
 export default function JumbotronTop() {
   return (

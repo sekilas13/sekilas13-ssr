@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import styles from "../../styles/Deskripsi.module.css";
+import styles from "../../styles/main/Deskripsi.module.css";
 
 export default function Deskripsi() {
   return (

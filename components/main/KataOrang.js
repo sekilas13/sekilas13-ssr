@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import styles from "../../styles/KataOrang.module.css";
+import styles from "../../styles/main/KataOrang.module.css";
 import data from "../../assets/data/KataOrang";
 import Carousel from "react-bootstrap/Carousel";
 
