@@ -15,7 +15,7 @@ export default function Gambar() {
                   <Image
                     src={g.src}
                     alt={g.alt}
-                    className="img-fluid img-thumbnail mt-3"
+                    className={`${styles.gambar} img-fluid img-thumbnail mt-3`}
                   />
                 </Col>
               ))}
