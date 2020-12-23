@@ -1,8 +1,7 @@
 import SimpleReactLightbox, { SRLWrapper } from "simple-react-lightbox";
-import { Row, Container } from "react-bootstrap";
-// import gambar from "../../assets/data/Gambar";
+import { Row, Container, Col, Image } from "react-bootstrap";
+import gambar from "../../assets/data/Gambar";
 import styles from "../../styles/Gambar.module.css";
-// import Image from "next/image";
 
 export default function Gambar() {
   return (
@@ -11,7 +10,7 @@ export default function Gambar() {
         <SRLWrapper>
           <Container className="pt-4">
             <Row>
-              {/* {gambar.map((g, i) => (
+              {gambar.map((g, i) => (
                 <Col md={4} key={i}>
                   <Image
                     src={g.src}
@@ -19,7 +18,7 @@ export default function Gambar() {
                     className="img-fluid img-thumbnail mt-3"
                   />
                 </Col>
-              ))} */}
+              ))}
             </Row>
           </Container>
         </SRLWrapper>
