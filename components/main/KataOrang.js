@@ -1,4 +1,5 @@
 import { useState, useEffect, ref, useRef } from "react";
+import styles from "../../styles/Jumbotron.module.css";
 
 export default function KataOrang() {
   const ref = useRef();
@@ -24,5 +25,5 @@ export default function KataOrang() {
     };
   }, []);
 
-  return <section ref={ref}></section>;
+  return <section id={styles.KataOrang} ref={ref}></section>;
 }
