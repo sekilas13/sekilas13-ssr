@@ -1,6 +1,8 @@
+import dynamic from "next/dynamic";
 import JumbotronTop from "./JumbotronTop";
 import Deskripsi from "./Deskripsi";
-import KataOrang from "./KataOrang";
+
+const KataOrang = dynamic(() => import("./KataOrang"), { ssr: false });
 
 export default function Main() {
   return (
