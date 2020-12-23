@@ -1,8 +1,9 @@
 import { Container, Row, Col } from "react-bootstrap";
+import styles from "../../styles/Footer.module.css";
 
 export default function Footer() {
   return (
-    <footer className="bg-dark text-white">
+    <footer id={styles.footer} className="bg-dark text-white">
       <Container>
         <Row className="pt-3 justify-content-center text-center">
           <Col md={4}>
