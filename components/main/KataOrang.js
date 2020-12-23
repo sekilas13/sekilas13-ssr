@@ -1,5 +1,5 @@
-import { useState, useEffect, ref, useRef } from "react";
-import styles from "../../styles/Jumbotron.module.css";
+import { useState, useEffect, useRef } from "react";
+import styles from "../../styles/KataOrang.module.css";
 
 export default function KataOrang() {
   const ref = useRef();
