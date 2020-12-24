@@ -6,29 +6,38 @@ import {
   faSkullCrossbones,
 } from "@fortawesome/free-solid-svg-icons";
 import { Row, Col } from "react-bootstrap";
-import axios from "axios";
 
-export async function getServerSideProps() {
-  const res = await axios("https://indonesia-covid-19.mathdro.id/api/");
-
-  return { props: { covid: res.data } };
-}
-
-export default function Card({ covid }) {
+export default function Card({ covidData }) {
   return (
     <>
       <Row className="mt-4 justify-content-center">
         <Col lg={3} sm={5}>
-          <CardWrapper label="Positif" icon={faVirus} />
+          <CardWrapper
+            data={covidData.jumlahKasus.toLocaleString()}
+            label="Positif"
+            icon={faVirus}
+          />
         </Col>
         <Col lg={3} sm={5}>
-          <CardWrapper label="Dirawat" icon={faHospital} />
+          <CardWrapper
+            data={covidData.perawatan.toLocaleString()}
+            label="Dirawat"
+            icon={faHospital}
+          />
         </Col>
         <Col lg={3} sm={5}>
-          <CardWrapper label="Sembuh" icon={faHandHoldingMedical} />
+          <CardWrapper
+            data={covidData.sembuh.toLocaleString()}
+            label="Sembuh"
+            icon={faHandHoldingMedical}
+          />
         </Col>
         <Col lg={3} sm={5}>
-          <CardWrapper label="Meninggal" icon={faSkullCrossbones} />
+          <CardWrapper
+            data={covidData.meninggal.toLocaleString()}
+            label="Meninggal"
+            icon={faSkullCrossbones}
+          />
         </Col>
       </Row>
       <Row className="mt-2">

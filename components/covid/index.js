@@ -1,11 +1,11 @@
 import Container from "react-bootstrap/Container";
 import Card from "./Card";
 
-export default function Covid() {
+export default function Covid({ covidData }) {
   return (
     <section>
       <Container fluid>
-        <Card />
+        <Card covidData={covidData} />
       </Container>
     </section>
   );
