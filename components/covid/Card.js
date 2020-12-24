@@ -8,8 +8,13 @@ import {
 import { Row, Col } from "react-bootstrap";
 import axios from "axios";
 
-function Card({ covid }) {
-  console.log(covid);
+export async function getServerSideProps() {
+  const res = await axios("https://indonesia-covid-19.mathdro.id/api/");
+
+  return { props: { covid: res.data } };
+}
+
+export default function Card({ covid }) {
   return (
     <>
       <Row className="mt-4 justify-content-center">
@@ -46,14 +51,3 @@ function Card({ covid }) {
     </>
   );
 }
-
-Card.getServerSideProps = async () => {
-  const covid = await axios("https://indonesia-covid-19.mathdro.id/api/");
-  console.log(covid);
-
-  return {
-    props: { covid },
-  };
-};
-
-export default Card;
