@@ -12,9 +12,6 @@
   .card {
     height: 302px;
   }
-  /* .covid .card#loading {
-    height: 200px;
-  } */
 }
 
 @media (min-width: 576px) and (max-width: 991px) {
