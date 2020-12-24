@@ -1,3 +1,4 @@
+import { useState } from "react";
 import CardWrapper from "./Custom/CardWrapper";
 import {
   faVirus,
@@ -6,8 +7,11 @@ import {
   faSkullCrossbones,
 } from "@fortawesome/free-solid-svg-icons";
 import { Row, Col } from "react-bootstrap";
+import { konversiBulan, updateTime } from "../../utils/konversiWaktu";
 
 export default function Card({ covidData }) {
+  const [time] = useState(new Date(covidData.lastUpdate));
+
   return (
     <>
       <Row className="mt-4 justify-content-center">
@@ -42,7 +46,7 @@ export default function Card({ covidData }) {
       </Row>
       <Row className="mt-2">
         <Col>
-          {/* <p>
+          <p>
             Terakhir data diperbarui tanggal{" "}
             <>
               {time && (
@@ -54,7 +58,7 @@ export default function Card({ covidData }) {
                 </>
               )}
             </>
-          </p> */}
+          </p>
         </Col>
       </Row>
     </>
