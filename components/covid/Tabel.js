@@ -1,4 +1,24 @@
 import { Table, Row, Col } from "react-bootstrap";
+import dynamic from "next/dynamic";
+
+const Tbody = dynamic(() => import("./lazy/Tbody"), {
+  fallback: (
+    <>
+      <tr>
+        <td>1</td>
+        <td colSpan={4} className="text-center">
+          Sedang mengambil data....
+        </td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td colSpan={4} className="text-center">
+          Mohon tunggu....
+        </td>
+      </tr>
+    </>
+  ),
+});
 
 export default function Tabel() {
   return (
@@ -18,7 +38,9 @@ export default function Tabel() {
             <th>Meninggal</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          <Tbody />
+        </tbody>
       </Table>
     </section>
   );
