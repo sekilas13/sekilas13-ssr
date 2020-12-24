@@ -8,7 +8,7 @@ export default function Tabel() {
           <h1 className="text-center">Data Provinsi</h1>
         </Col>
       </Row>
-      <Table striped bordered hover responsive variant={store.theme}>
+      <Table striped bordered hover responsive>
         <thead>
           <tr>
             <th>#</th>
