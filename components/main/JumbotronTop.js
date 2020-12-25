@@ -8,7 +8,7 @@ export default function JumbotronTop() {
       <Container className={styles.container}>
         <Row className="justify-content-center">
           <ProgressiveImage
-            src={require("../../assets/Img/KIR/KIR.png")}
+            src={require("../../assets/Img/KIR/KIR.png?resize&size=228")}
             placeholder={require("../../assets/Img/KIR/KIR.png?resize&size=15")}
           >
             {(src, loading) => (
