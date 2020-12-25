@@ -1,5 +1,16 @@
 import Head from "next/head";
 import Content from "../components/main";
+import dynamic from "next/dynamic";
+
+const Navigasi = dynamic(() => import("../components/Navigasi"), {
+  loading: () => (
+    <nav
+      className="navbar navbar-expand-lg navbar-light bg-light sticky-top"
+      style={{ height: "56px" }}
+    />
+  ),
+  ssr: false,
+});
 
 export default function Home() {
   return (
@@ -30,6 +41,7 @@ export default function Home() {
         <link rel="preconnect" href="https://via.placeholder.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
       </Head>
+      <Navigasi />
       <Content />
     </>
   );
