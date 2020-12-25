@@ -12,6 +12,7 @@ export default class Root extends Document {
         <Head>
           <link rel="icon" href="/favicon.ico" />
           <link rel="apple-touch-icon" href="/logo192-apple-touch.png" />
+          <link rel="manifest" href="manifest.json" />
         </Head>
         <body>
           <Main />
