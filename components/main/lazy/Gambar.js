@@ -19,7 +19,7 @@ export default function Gambar() {
                       alt={g.alt}
                       style={{
                         width: "100%",
-                        filter: loading ? "blur(3.5px)" : "none",
+                        filter: loading ? "blur(10px)" : "none",
                         transition: "all 0.40s linear",
                       }}
                       className={`${styles.gambar} img-fluid img-thumbnail mt-3`}
