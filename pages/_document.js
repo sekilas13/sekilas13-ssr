@@ -11,7 +11,7 @@ export default class Root extends Document {
       <Html lang="id">
         <Head>
           <link rel="icon" href="/favicon.ico" />
-          <link rel="apple-touch-icon" href="/logo192.png" />
+          <link rel="apple-touch-icon" href="/logo192-apple-touch.png" />
         </Head>
         <body>
           <Main />
