@@ -5,12 +5,12 @@ const img4 = require("../Img/normal/4.jpg");
 const img5 = require("../Img/normal/5.jpg");
 const img6 = require("../Img/normal/6.jpg");
 
-const img1holder = require("../Img/normal/blur/1.jpg");
-const img2holder = require("../Img/normal/blur/2.jpg");
-const img3holder = require("../Img/normal/blur/3.jpg");
-const img4holder = require("../Img/normal/blur/4.jpg");
-const img5holder = require("../Img/normal/blur/5.jpg");
-const img6holder = require("../Img/normal/blur/6.jpg");
+const img1holder = require("../Img/normal/1.jpg?resize&size=15");
+const img2holder = require("../Img/normal/2.jpg?resize&size=15");
+const img3holder = require("../Img/normal/3.jpg?resize&size=15");
+const img4holder = require("../Img/normal/4.jpg?resize&size=15");
+const img5holder = require("../Img/normal/5.jpg?resize&size=15");
+const img6holder = require("../Img/normal/6.jpg?resize&size=15");
 
 const webp1 = require("../Img/webp/1.webp");
 const webp2 = require("../Img/webp/2.webp");
@@ -19,12 +19,12 @@ const webp4 = require("../Img/webp/4.webp");
 const webp5 = require("../Img/webp/5.webp");
 const webp6 = require("../Img/webp/6.webp");
 
-const webp1holder = require("../Img/webp/blur/1.webp");
-const webp2holder = require("../Img/webp/blur/2.webp");
-const webp3holder = require("../Img/webp/blur/3.webp");
-const webp4holder = require("../Img/webp/blur/4.webp");
-const webp5holder = require("../Img/webp/blur/5.webp");
-const webp6holder = require("../Img/webp/blur/6.webp");
+const webp1holder = require("../Img/webp/1.webp?resize&size=15");
+const webp2holder = require("../Img/webp/2.webp?resize&size=15");
+const webp3holder = require("../Img/webp/3.webp?resize&size=15");
+const webp4holder = require("../Img/webp/4.webp?resize&size=15");
+const webp5holder = require("../Img/webp/5.webp?resize&size=15");
+const webp6holder = require("../Img/webp/6.webp?resize&size=15");
 
 const isSupport = require("../../utils/isSupportWebp");
 
