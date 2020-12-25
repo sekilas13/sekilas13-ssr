@@ -8,14 +8,14 @@ export default function JumbotronTop() {
       <Container className={styles.container}>
         <Row className="justify-content-center">
           <ProgressiveImage
-            src="/assets/real/KIR.png"
-            placeholder="/assets/real/KIR.placeholder.png"
+            src={require("../../assets/Img/KIR/KIR.png")}
+            placeholder={require("../../assets/Img/KIR/KIR.png?resize&size=15")}
           >
             {(src, loading) => (
               <img
                 src={src}
                 style={{
-                  filter: loading ? "blur(3.5px)" : "none",
+                  filter: loading ? "blur(10px)" : "none",
                   transition: "all 0.40s linear",
                 }}
                 className={`${styles.gambar} img-fluid text-center rounded`}
