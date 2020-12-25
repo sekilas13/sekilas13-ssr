@@ -2,7 +2,7 @@ import { Table, Row, Col } from "react-bootstrap";
 import dynamic from "next/dynamic";
 
 const Tbody = dynamic(() => import("./lazy/Tbody"), {
-  fallback: (
+  loading: () => (
     <>
       <tr>
         <td>1</td>
@@ -18,6 +18,7 @@ const Tbody = dynamic(() => import("./lazy/Tbody"), {
       </tr>
     </>
   ),
+  ssr: false,
 });
 
 export default function Tabel() {
