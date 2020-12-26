@@ -30,7 +30,7 @@ export default function KataOrang() {
   }, []);
 
   return (
-    <section id={styles.KataOrang} ref={ref}>
+    <section className="KataOrang" id={styles.KataOrang} ref={ref}>
       <LazyLoad once>
         <Content ukuran={ukuran} />
       </LazyLoad>

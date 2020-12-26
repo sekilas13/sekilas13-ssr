@@ -4,21 +4,34 @@ import { memo } from "react";
 
 const List = {
   "/": [
-    { nama: "Deskripsi", to: "#deskripsi" },
-    { nama: "Pandangan Orang", to: "#KataOrang" },
-    { nama: "Gambar", to: "#gambar" },
+    { nama: "Deskripsi", to: ".deskripsi" },
+    { nama: "Pandangan Orang", to: ".KataOrang" },
+    { nama: "Gambar", to: ".gambar" },
   ],
   "/covid": [
-    { nama: "Kondisi Terkini", to: "#all" },
-    { nama: "Data Provinsi", to: "#provinsi" },
+    { nama: "Kondisi Terkini", to: ".all" },
+    { nama: "Data Provinsi", to: ".provinsi" },
   ],
 };
 
-function NavLink() {
+function NavLink({ getHeight, expanded, setExpandClose }) {
   const { pathname } = useRouter();
 
-  const handleLink = (e) => {
-    e.preventDefault();
+  const handleLink = (target) => {
+    setExpandClose();
+    const height = getHeight();
+    if (height) {
+      const el = document.querySelector(`section${target}`);
+      if (expanded) {
+        setTimeout(() => {
+          const tujuan = el.offsetTop - height;
+          window.scrollTo(0, tujuan);
+        }, 150);
+      } else {
+        const tujuan = el.offsetTop - height;
+        window.scrollTo(0, tujuan);
+      }
+    }
   };
 
   const renderer = List[pathname];
@@ -32,7 +45,14 @@ function NavLink() {
             {pathname === "/" ? "Informasi Covid 19" : "Halaman Utama"}
           </Nav.Link>
           {renderer.map((link, i) => (
-            <Nav.Link key={i} href={link.to} id={link.to} onClick={handleLink}>
+            <Nav.Link
+              key={i}
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLink(link.to);
+              }}
+            >
               {link.nama}
             </Nav.Link>
           ))}

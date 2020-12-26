@@ -3,7 +3,7 @@ import styles from "../../styles/main/Deskripsi.module.css";
 
 export default function Deskripsi() {
   return (
-    <section id={styles.deskripsi}>
+    <section className="deskripsi" id={styles.deskripsi}>
       <Container>
         <Row className="justify-content-center">
           <Col className="mt-3">

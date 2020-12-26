@@ -1,11 +1,31 @@
-import { memo } from "react";
+import { memo, useRef, useState, useCallback } from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
-import { NavLink } from "./memoized";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 
+const NavLink = dynamic(() => import("./memoized").then((mod) => mod.NavLink));
+
 function Navigasi() {
+  const ref = useRef();
+  const [expanded, setExpand] = useState(false);
+
+  const expandClose = useCallback(() => setExpand(false), [expanded]);
+  const getHeight = useCallback(
+    () =>
+      ref.current ? ref.current.getBoundingClientRect().height : ref.current,
+    [ref]
+  );
+
   return (
-    <Navbar bg="light" variant="light" sticky="top" expand="lg">
+    <Navbar
+      bg="light"
+      variant="light"
+      sticky="top"
+      expand="lg"
+      expanded={expanded}
+      onToggle={() => setExpand((expanded) => !expanded)}
+      ref={ref}
+    >
       <Container>
         <Link href="/">
           <Navbar.Brand href="/">KIR</Navbar.Brand>
@@ -13,7 +33,11 @@ function Navigasi() {
         <Navbar.Toggle aria-controls="navigasi-nav" />
         <Navbar.Collapse id="navigasi-nav">
           <Nav className="ml-auto text-center">
-            <NavLink />
+            <NavLink
+              expanded={expanded}
+              setExpandClose={expandClose}
+              getHeight={getHeight}
+            />
           </Nav>
         </Navbar.Collapse>
       </Container>

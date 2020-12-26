@@ -6,7 +6,7 @@ const Content = dynamic(() => import("./lazy/Gambar"), { ssr: false });
 
 export default function Gambar() {
   return (
-    <section id={styles.gambar}>
+    <section className="gambar" id={styles.gambar}>
       <LazyLoad once>
         <Content />
       </LazyLoad>
