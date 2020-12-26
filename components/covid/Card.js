@@ -13,7 +13,7 @@ export default function Card({ covidData }) {
   const [time] = useState(new Date(covidData.lastUpdate));
 
   return (
-    <>
+    <section id="all">
       <Row className="mt-4 justify-content-center">
         <Col lg={3} sm={5}>
           <CardWrapper
@@ -61,6 +61,6 @@ export default function Card({ covidData }) {
           </p>
         </Col>
       </Row>
-    </>
+    </section>
   );
 }

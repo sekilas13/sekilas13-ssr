@@ -23,7 +23,7 @@ const Tbody = dynamic(() => import("./lazy/Tbody"), {
 
 export default function Tabel() {
   return (
-    <section>
+    <section id="provinsi">
       <Row className="justify-content-center mt-4 mb-2">
         <Col md={6}>
           <h1 className="text-center">Data Provinsi</h1>

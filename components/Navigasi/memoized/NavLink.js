@@ -9,8 +9,8 @@ const List = {
     { nama: "Gambar", to: ".gambar" },
   ],
   "/covid": [
-    { nama: "Kondisi Terkini", to: ".all" },
-    { nama: "Data Provinsi", to: ".provinsi" },
+    { nama: "Kondisi Terkini", to: "#all" },
+    { nama: "Data Provinsi", to: "#provinsi" },
   ],
 };
 

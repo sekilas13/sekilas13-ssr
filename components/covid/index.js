@@ -4,11 +4,9 @@ import Card from "./Card";
 
 export default function Covid({ covidData }) {
   return (
-    <section>
-      <Container fluid>
-        <Card covidData={covidData} />
-        <Tabel />
-      </Container>
-    </section>
+    <Container fluid>
+      <Card covidData={covidData} />
+      <Tabel />
+    </Container>
   );
 }
