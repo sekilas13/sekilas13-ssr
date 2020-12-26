@@ -9,7 +9,7 @@ const Footer = dynamic(() => import("./Footer"), { ssr: false });
 export default function Main() {
   return (
     <>
-      <JumbotronTop />
+      <JumbotronTop prefetch={false} />
       <Deskripsi />
       <KataOrang />
       <Gambar />
