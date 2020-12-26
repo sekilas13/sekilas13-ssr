@@ -2,6 +2,12 @@ import { useState } from "react";
 import data from "../../../assets/data/KataOrang";
 import Carousel from "react-bootstrap/Carousel";
 
+const fullUrl =
+  location.protocol +
+  "//" +
+  location.hostname +
+  (location.port ? ":" + location.port : "");
+
 export default function KataOrang({ ukuran }) {
   const [index, setIndex] = useState(3);
 
@@ -13,7 +19,7 @@ export default function KataOrang({ ukuran }) {
         <Carousel.Item key={i}>
           <img
             className="d-block w-100"
-            src={`https://via.placeholder.com/${ukuran.width}x${ukuran.height}/373940/fff&text=+`}
+            src={`${fullUrl}/api/image/${ukuran.width}/${ukuran.height}/373940`}
             alt={key.alt}
             width={ukuran.width}
             height={ukuran.height}
