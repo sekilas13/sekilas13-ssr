@@ -18,12 +18,16 @@ const Img = dynamic(() => import("./lazy/JumbonImg"), {
     />
   ),
 });
+const Hasatu = dynamic(() => import("./lazy/JumbonHasatu"), {
+  loading: () => <h1 className={styles.hasatu}>Sekilas !</h1>,
+});
+const Paragrap = dynamic(() => import("./lazy/JumbonParagrap"), {
+  loading: () => <p className={styles.paragrap}>Semangat KIR Tiga Belas !</p>,
+});
 
 export default function JumbotronTop() {
   const ref = useRef();
   const [{ offset }, setOffset] = useSpring(() => ({ offset: 0 }));
-  // const calc2 = (o) => `translateY(${o * 0.1}px)`;
-  // const calc3 = (o) => `translateY(${o * 0.08}px)`;
 
   const handleScroll = () => {
     if (ref.current) {
@@ -55,10 +59,10 @@ export default function JumbotronTop() {
           </ProgressiveImage>
         </Row>
         <Row className="justify-content-center">
-          <h1 className={styles.hasatu}>Sekilas !</h1>
+          <Hasatu offset={offset} />
         </Row>
         <Row className="justify-content-center">
-          <p className={styles.paragrap}>Semangat KIR Tiga Belas !</p>
+          <Paragrap offset={offset} />
         </Row>
       </Container>
     </Jumbotron>
