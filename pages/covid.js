@@ -1,7 +1,11 @@
 import axios from "axios";
 import Head from "next/head";
 import dynamic from "next/dynamic";
+import useDarkMode from "use-dark-mode";
 import Content from "../components/covid";
+import { ThemeProvider } from "styled-components";
+import GlobalStyles from "../components/covid/GlobalStyles";
+import { darkTheme, lightTheme } from "../assets/data/Theme";
 
 const Navigasi = dynamic(() => import("../components/Navigasi"), {
   loading: () => (
@@ -10,7 +14,7 @@ const Navigasi = dynamic(() => import("../components/Navigasi"), {
       style={{ height: "56px" }}
     />
   ),
-  ssr: false,
+  ssr: false
 });
 
 export async function getServerSideProps() {
@@ -20,6 +24,9 @@ export async function getServerSideProps() {
 }
 
 export default function Covid({ covid }) {
+  const dark = useDarkMode(false, { storageKey: null, onChange: null });
+  const theme = dark.value ? darkTheme : lightTheme;
+
   return (
     <>
       <Head>
@@ -29,8 +36,11 @@ export default function Covid({ covid }) {
           content="Informasi penyebaran virus corona di Indonesia dengan tampilan web dari Karya Ilmiah Remaja SMPN 13 Bekasi"
         />
       </Head>
-      <Navigasi />
-      <Content covidData={covid} />
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Navigasi dark={dark} />
+        <Content covidData={covid} theme={dark.value} />
+      </ThemeProvider>
     </>
   );
 }

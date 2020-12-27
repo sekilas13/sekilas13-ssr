@@ -2,11 +2,11 @@ import Container from "react-bootstrap/Container";
 import Tabel from "./Tabel";
 import Card from "./Card";
 
-export default function Covid({ covidData }) {
+export default function Covid({ covidData, theme }) {
   return (
     <Container fluid>
       <Card covidData={covidData} />
-      <Tabel />
+      <Tabel theme={theme} />
     </Container>
   );
 }

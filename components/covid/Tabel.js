@@ -18,10 +18,10 @@ const Tbody = dynamic(() => import("./lazy/Tbody"), {
       </tr>
     </>
   ),
-  ssr: false,
+  ssr: false
 });
 
-export default function Tabel() {
+export default function Tabel({ theme }) {
   return (
     <section id="provinsi">
       <Row className="justify-content-center mt-4 mb-2">
@@ -29,7 +29,13 @@ export default function Tabel() {
           <h1 className="text-center">Data Provinsi</h1>
         </Col>
       </Row>
-      <Table striped bordered hover responsive>
+      <Table
+        striped
+        bordered
+        hover
+        responsive
+        variant={theme ? "dark" : "light"}
+      >
         <thead>
           <tr>
             <th>#</th>
