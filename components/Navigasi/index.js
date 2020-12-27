@@ -4,6 +4,9 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 
 const NavLink = dynamic(() => import("./memoized").then((mod) => mod.NavLink));
+const FormSwitcher = dynamic(() =>
+  import("./memoized").then((mod) => mod.FormSwitcher)
+);
 
 function Navigasi() {
   const ref = useRef();
@@ -39,6 +42,7 @@ function Navigasi() {
               getHeight={getHeight}
             />
           </Nav>
+          <FormSwitcher />
         </Navbar.Collapse>
       </Container>
     </Navbar>

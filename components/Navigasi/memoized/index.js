@@ -1,3 +1,4 @@
 import NavLink from "./NavLink";
+import FormSwitcher from "./FormSwitcher";
 
-export { NavLink };
+export { NavLink, FormSwitcher };
