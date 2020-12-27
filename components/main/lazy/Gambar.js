@@ -1,8 +1,9 @@
 import SimpleReactLightbox, { SRLWrapper } from "simple-react-lightbox";
-import { Row, Container, Col, Image } from "react-bootstrap";
-import styles from "../../../styles/main/Gambar.module.css";
-import ProgressiveImage from "react-progressive-image";
+import { Row, Container, Col } from "react-bootstrap";
 import gambar from "../../../assets/data/Gambar";
+import dynamic from "next/dynamic";
+
+const Wrapper = dynamic(() => import("./WrapperImg"));
 
 export default function Gambar() {
   return (
@@ -12,20 +13,7 @@ export default function Gambar() {
           <Row>
             {gambar.map((g, i) => (
               <Col md={4} key={i}>
-                <ProgressiveImage src={g.src} placeholder={g.placeholder}>
-                  {(src, loading) => (
-                    <Image
-                      src={src}
-                      alt={g.alt}
-                      style={{
-                        width: "100%",
-                        filter: loading ? "blur(10px)" : "none",
-                        transition: "all 0.40s linear",
-                      }}
-                      className={`${styles.gambar} img-fluid img-thumbnail mt-3`}
-                    />
-                  )}
-                </ProgressiveImage>
+                <Wrapper src={g.src} alt={g.alt} placeholder={g.placeholder} />
               </Col>
             ))}
           </Row>
