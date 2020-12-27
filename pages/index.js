@@ -1,6 +1,10 @@
-import Head from "next/head";
+import { darkTheme, lightTheme } from "../assets/data/Theme";
+import GlobalStyles from "../components/main/GlobalStyles";
+import { ThemeProvider } from "styled-components";
 import Content from "../components/main";
+import useDarkMode from "use-dark-mode";
 import dynamic from "next/dynamic";
+import Head from "next/head";
 
 const Navigasi = dynamic(() => import("../components/Navigasi"), {
   loading: () => (
@@ -9,10 +13,13 @@ const Navigasi = dynamic(() => import("../components/Navigasi"), {
       style={{ height: "56px" }}
     />
   ),
-  ssr: false,
+  ssr: false
 });
 
 export default function Home() {
+  const dark = useDarkMode(false, { storageKey: null, onChange: null });
+  const theme = dark.value ? darkTheme : lightTheme;
+
   return (
     <>
       <Head>
@@ -40,8 +47,11 @@ export default function Home() {
 
         <link rel="preconnect" href="https://fonts.gstatic.com" />
       </Head>
-      <Navigasi />
-      <Content />
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <Navigasi />
+        <Content />
+      </ThemeProvider>
     </>
   );
 }
