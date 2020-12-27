@@ -38,7 +38,6 @@ export default function Home() {
           />
         </noscript>
 
-        <link rel="preconnect" href="https://via.placeholder.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
       </Head>
       <Navigasi />
