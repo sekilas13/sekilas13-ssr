@@ -6,22 +6,24 @@ const List = {
   "/": [
     { nama: "Deskripsi", to: ".deskripsi" },
     { nama: "Pandangan Orang", to: ".KataOrang" },
-    { nama: "Gambar", to: ".gambar" },
+    { nama: "Gambar", to: ".gambar" }
   ],
   "/covid": [
     { nama: "Kondisi Terkini", to: "#all" },
-    { nama: "Data Provinsi", to: "#provinsi" },
-  ],
+    { nama: "Data Provinsi", to: "#provinsi" }
+  ]
 };
 
-function NavLink({ getHeight, expanded, setExpandClose }) {
-  const { pathname } = useRouter();
-
-  const handleLink = (target) => {
+function LinkNav({ link, getHeight, expanded, setExpandClose }) {
+  const handleLink = (e) => {
+    e.preventDefault();
     setExpandClose();
+
     const height = getHeight();
+    const selector = "section" + link.to;
+
     if (height) {
-      const el = document.querySelector(`section${target}`);
+      const el = document.querySelector(selector);
       if (expanded) {
         setTimeout(() => {
           const tujuan = el.offsetTop - height;
@@ -32,7 +34,22 @@ function NavLink({ getHeight, expanded, setExpandClose }) {
         window.scrollTo(0, tujuan);
       }
     }
+
+    document
+      .querySelectorAll(".nav-link")
+      .forEach((node) => node.classList.remove("active"));
+    e.target.classList.add("active");
   };
+
+  return (
+    <Nav.Link href="#" onClick={handleLink}>
+      {link.nama}
+    </Nav.Link>
+  );
+}
+
+function NavLink({ getHeight, expanded, setExpandClose }) {
+  const { pathname } = useRouter();
 
   const renderer = List[pathname];
   const to = pathname === "/" ? "/covid" : "/";
@@ -45,16 +62,13 @@ function NavLink({ getHeight, expanded, setExpandClose }) {
             {pathname === "/" ? "Informasi Covid 19" : "Halaman Utama"}
           </Nav.Link>
           {renderer.map((link, i) => (
-            <Nav.Link
+            <LinkNav
               key={i}
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                handleLink(link.to);
-              }}
-            >
-              {link.nama}
-            </Nav.Link>
+              link={link}
+              getHeight={getHeight}
+              setExpandClose={setExpandClose}
+              expanded={expanded}
+            />
           ))}
         </>
       )}
