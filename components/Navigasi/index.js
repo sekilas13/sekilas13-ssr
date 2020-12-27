@@ -12,7 +12,7 @@ const FormSwitcher = dynamic(
   }
 );
 
-function Navigasi() {
+function Navigasi({ dark }) {
   const ref = useRef();
   const [expanded, setExpand] = useState(false);
 
@@ -22,11 +22,15 @@ function Navigasi() {
       ref.current ? ref.current.getBoundingClientRect().height : ref.current,
     [ref]
   );
+  const themeToggler = useCallback(
+    () => (dark.value ? dark.disable() : dark.enable()),
+    [dark]
+  );
 
   return (
     <Navbar
-      bg="light"
-      variant="light"
+      bg={dark.value ? "dark" : "light"}
+      variant={!dark.value && "light"}
       sticky="top"
       expand="lg"
       expanded={expanded}
@@ -46,11 +50,15 @@ function Navigasi() {
               getHeight={getHeight}
             />
           </Nav>
-          <FormSwitcher />
+          <FormSwitcher theme={dark.value} themeToggler={themeToggler} />
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 }
 
-export default memo(Navigasi);
+const compare = function (prevProps, nextProps) {
+  return JSON.stringify(prevProps) === JSON.stringify(nextProps);
+};
+
+export default memo(Navigasi, compare);

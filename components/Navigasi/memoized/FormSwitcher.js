@@ -7,20 +7,24 @@ const Sun = dynamic(() => import("./Sun"));
 const Moona = dynamic(() => import("./Moona"));
 const Switcher = dynamic(() => import("./Switcher"));
 
-function FormSwitcher() {
+function FormSwitcher({ theme, themeToggler }) {
   return (
     <Form id={styles.switcher}>
       <Form.Row className="justify-content-center">
         <small className={styles.sun}>
-          <Sun />
+          <Sun theme={theme} />
         </small>
-        <Switcher />
+        <Switcher theme={theme} themeToggler={themeToggler} />
         <small className={styles.moona}>
-          <Moona />
+          <Moona theme={theme} />
         </small>
       </Form.Row>
     </Form>
   );
 }
 
-export default memo(FormSwitcher);
+const compare = function (prevProps, nextProps) {
+  return prevProps.theme === nextProps.theme;
+};
+
+export default memo(FormSwitcher, compare);

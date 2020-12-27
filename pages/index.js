@@ -49,7 +49,7 @@ export default function Home() {
       </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyles />
-        <Navigasi />
+        <Navigasi dark={dark} />
         <Content />
       </ThemeProvider>
     </>

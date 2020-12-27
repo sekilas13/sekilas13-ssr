@@ -1,13 +1,13 @@
 import { memo } from "react";
 import Check from "react-bootstrap/FormCheck";
 
-function Switcher() {
+function Switcher({ theme, themeToggler }) {
   return (
     <Check
       type="switch"
       id="custom-switch"
-      //   checked={theme === "light" ? false : true}
-      //   onChange={tToggler}
+      checked={theme}
+      onChange={themeToggler}
       label="&zwnj;"
     />
   );
