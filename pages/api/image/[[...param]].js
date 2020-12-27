@@ -17,6 +17,6 @@ export default function handler(req, res) {
   const buff = canvas.toBuffer("image/png");
 
   res.status = 200;
-  res.contentType = "image/png";
-  res.send(new Buffer.from(buff, "binary"));
+  res.setHeader("Content-Type", "image/png");
+  res.end(new Buffer.from(buff, "binary"));
 }
