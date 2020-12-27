@@ -1,3 +1,4 @@
+import styles from '../../styles/navigasi/Navigasi.module.css'
 import { memo, useRef, useState, useCallback } from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import dynamic from "next/dynamic";
@@ -30,7 +31,8 @@ function Navigasi({ dark }) {
   return (
     <Navbar
       bg={dark.value ? "dark" : "light"}
-      variant={!dark.value && "light"}
+      variant={dark.value ? "dark" : "light"}
+      className={dark.value && styles.darker}
       sticky="top"
       expand="lg"
       expanded={expanded}
