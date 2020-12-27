@@ -50,7 +50,7 @@ export default function Home() {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Navigasi dark={dark} />
-        <Content />
+        <Content theme={dark.value} />
       </ThemeProvider>
     </>
   );

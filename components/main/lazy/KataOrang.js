@@ -8,7 +8,7 @@ const fullUrl =
   location.hostname +
   (location.port ? ":" + location.port : "");
 
-export default function KataOrang({ ukuran }) {
+export default function KataOrang({ ukuran, theme }) {
   const [index, setIndex] = useState(3);
 
   const handleSelect = (selectedIndex) => void setIndex(selectedIndex);
@@ -19,14 +19,16 @@ export default function KataOrang({ ukuran }) {
         <Carousel.Item key={i}>
           <img
             className="d-block w-100"
-            src={`${fullUrl}/api/image/${ukuran.width}/${ukuran.height}/373940`}
+            src={`${fullUrl}/api/image/${ukuran.width}/${ukuran.height}/${
+              theme ? "373940" : "f1faee"
+            }`}
             alt={key.alt}
             width={ukuran.width}
             height={ukuran.height}
           />
           <Carousel.Caption>
-            <h3>{key.capt[0]}</h3>
-            <p>{key.capt[1]}</p>
+            <h3 style={{ color: theme ? "fff" : "000" }}>{key.capt[0]}</h3>
+            <p style={{ color: theme ? "fff" : "000" }}>{key.capt[1]}</p>
           </Carousel.Caption>
         </Carousel.Item>
       ))}

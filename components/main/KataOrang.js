@@ -5,11 +5,11 @@ import dynamic from "next/dynamic";
 
 const Content = dynamic(() => import("./lazy/KataOrang"), { ssr: false });
 
-export default function KataOrang() {
+export default function KataOrang({ theme }) {
   const ref = useRef();
   const [ukuran, setUkuran] = useState({
     width: window.innerWidth,
-    height: window.innerHeight,
+    height: window.innerHeight
   });
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function KataOrang() {
   return (
     <section className="KataOrang" id={styles.KataOrang} ref={ref}>
       <LazyLoad once>
-        <Content ukuran={ukuran} />
+        <Content ukuran={ukuran} theme={theme} />
       </LazyLoad>
     </section>
   );
