@@ -30,7 +30,7 @@ function Navigasi({ dark }) {
 
   return (
     <Navbar
-      bg={dark.value ? "dark" : "light"}
+      bg={!dark.value && "light"}
       variant={dark.value ? "dark" : "light"}
       className={dark.value && styles.darker}
       sticky="top"
