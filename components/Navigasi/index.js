@@ -4,8 +4,12 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 
 const NavLink = dynamic(() => import("./memoized").then((mod) => mod.NavLink));
-const FormSwitcher = dynamic(() =>
-  import("./memoized").then((mod) => mod.FormSwitcher)
+const FormSwitcher = dynamic(
+  () => import("./memoized").then((mod) => mod.FormSwitcher),
+  {
+    loading: () => <form style={{ height: "24px", width: "79px" }} />,
+    ssr: false
+  }
 );
 
 function Navigasi() {
