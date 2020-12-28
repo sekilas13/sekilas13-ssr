@@ -1,4 +1,4 @@
-import styles from '../../styles/navigasi/Navigasi.module.css'
+import styles from "../../styles/navigasi/Navigasi.module.css";
 import { memo, useRef, useState, useCallback } from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import dynamic from "next/dynamic";
@@ -45,13 +45,11 @@ function Navigasi({ dark }) {
         </Link>
         <Navbar.Toggle aria-controls="navigasi-nav" />
         <Navbar.Collapse id="navigasi-nav">
-          <Nav className="ml-auto text-center">
-            <NavLink
-              expanded={expanded}
-              setExpandClose={expandClose}
-              getHeight={getHeight}
-            />
-          </Nav>
+          <NavLink
+            expanded={expanded}
+            setExpandClose={expandClose}
+            getHeight={getHeight}
+          />
           <FormSwitcher theme={dark.value} themeToggler={themeToggler} />
         </Navbar.Collapse>
       </Container>

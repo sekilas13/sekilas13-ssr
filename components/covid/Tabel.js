@@ -1,4 +1,5 @@
 import { Table, Row, Col } from "react-bootstrap";
+import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 
 const Tbody = dynamic(() => import("./lazy/Tbody"), {
@@ -22,6 +23,9 @@ const Tbody = dynamic(() => import("./lazy/Tbody"), {
 });
 
 export default function Tabel({ theme }) {
+  const [tema, setTema] = useState(false);
+  useEffect(() => setTema(theme), [theme]);
+
   return (
     <section id="provinsi">
       <Row className="justify-content-center mt-4 mb-2">
@@ -34,7 +38,7 @@ export default function Tabel({ theme }) {
         bordered
         hover
         responsive
-        variant={theme ? "dark" : "light"}
+        variant={tema ? "dark" : "light"}
       >
         <thead>
           <tr>
