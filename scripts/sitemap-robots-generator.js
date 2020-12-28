@@ -1,5 +1,7 @@
 const fs = require("fs");
 
+const domain = "https://sekilas13.vercel.app";
+
 const globby = require("globby");
 const prettier = require("prettier");
 
@@ -25,7 +27,7 @@ const prettier = require("prettier");
 
               return `
                 <url>
-                  <loc>${`https://sekilas13.vercel.app${route}`}</loc>
+                  <loc>${`${domain}${route}`}</loc>
                   <lastmod>${date}</lastmod>
                 </url>
               `;
@@ -33,6 +35,13 @@ const prettier = require("prettier");
             .join("")}
       </urlset>
     `;
+  const robots = `    
+    User-agent: *
+    Allow: /*
+    Disallow: /api/*
+
+    Sitemap: ${domain}/sitemap.xml
+  `;
 
   const formatted = prettier.format(sitemap, {
     ...prettierConfig,
@@ -40,4 +49,5 @@ const prettier = require("prettier");
   });
 
   fs.writeFileSync("public/sitemap.xml", formatted);
+  fs.writeFileSync("public/robots.txt", robots);
 })();

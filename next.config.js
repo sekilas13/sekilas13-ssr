@@ -46,7 +46,7 @@ module.exports = withPlugins(
   {
     webpack: (config, { isServer }) => {
       if (isServer) {
-        require("./scripts/sitemap-generator");
+        require("./scripts/sitemap-robots-generator");
       }
 
       return config;
