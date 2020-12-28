@@ -7,6 +7,10 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../components/covid/GlobalStyles";
 import { darkTheme, lightTheme } from "../assets/data/Theme";
 
+// Hajat preload
+import Switcher from "../styles/navigasi/Switcher.module.css";
+import Navi from "../styles/navigasi/Navigasi.module.css";
+
 const Navigasi = dynamic(() => import("../components/Navigasi"), {
   loading: () => (
     <nav
@@ -35,8 +39,11 @@ export default function Covid({ covid }) {
           name="description"
           content="Informasi penyebaran virus corona di Indonesia dengan tampilan web dari Karya Ilmiah Remaja SMPN 13 Bekasi"
         />
+
+        <link rel="preload" href={Navi} as="style" />
+        <link rel="preload" href={Switcher} as="style" />
       </Head>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme} prefetch={false}>
         <GlobalStyles />
         <Navigasi dark={dark} />
         <Content covidData={covid} theme={dark.value} />
