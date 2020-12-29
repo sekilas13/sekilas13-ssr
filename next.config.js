@@ -11,6 +11,8 @@ const dualENV = {
   }
 };
 
+const env = dualENV[process.env.NODE_ENV];
+
 module.exports = withPlugins(
   [
     [
@@ -55,11 +57,11 @@ module.exports = withPlugins(
   {
     webpack: (config, { isServer }) => {
       if (isServer) {
-        require("./scripts/sitemap-robots-generator");
+        require("./scripts/sitemap-robots-generator")(env.PUBLIC_URL);
       }
 
       return config;
     },
-    env: dualENV[process.env.NODE_ENV]
+    env
   }
 );
