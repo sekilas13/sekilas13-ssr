@@ -44,6 +44,8 @@ export default function Covid({ covid }) {
             key={css}
           />
         ))}
+
+        <meta name="theme-color" content={dark.value ? "#323234" : "#f0efeb"} />
       </Head>
       <NextSeo
         title="Sekilas 13 | Informasi Covid 19"

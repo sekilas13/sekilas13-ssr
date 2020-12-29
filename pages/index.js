@@ -51,6 +51,8 @@ export default function Home() {
           href="https://fonts.googleapis.com/css2?family=Eczar:wght@600&family=Roboto&family=Kufam&display=swap"
         />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
+
+        <meta name="theme-color" content={dark.value ? "#323234" : "#f0efeb"} />
       </Head>
       <NextSeo
         title="Karya Ilmiah Remaja SMP Negeri 13 Bekasi"

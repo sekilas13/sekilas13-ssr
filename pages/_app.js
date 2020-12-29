@@ -27,6 +27,7 @@ function MyApp({ Component, pageProps }) {
           name="google-site-verification"
           content="DFwLW8l_q7ZK1yuzt9Lp4HeCNWRP2-83BocCT8QeXpU"
         />
+        <meta name="theme-color" content="#f0efeb" />
       </Head>
       <Component {...pageProps} />
     </>
