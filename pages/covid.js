@@ -6,6 +6,7 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../components/covid/GlobalStyles";
 import { darkTheme, lightTheme } from "../assets/data/Theme";
 import { NextSeo } from "next-seo";
+import Head from "next/head";
 
 const Navigasi = dynamic(() => import("../components/Navigasi"), {
   loading: () => (
@@ -23,12 +24,27 @@ export async function getServerSideProps() {
   return { props: { covid: res.data } };
 }
 
+const PRELOAD_CSS = [
+  "b337d7e4fd55d8158c57.css", // Statistik.module.css
+  "bff4e0b56d744a9baaee.css" // Navigasi.module.css
+];
+
 export default function Covid({ covid }) {
   const dark = useDarkMode(false, { storageKey: null, onChange: null });
   const theme = dark.value ? darkTheme : lightTheme;
 
   return (
     <>
+      <Head>
+        {PRELOAD_CSS.map((css) => (
+          <link
+            rel="preload"
+            href={"/_next/static/css/" + css}
+            as="style"
+            key={css}
+          />
+        ))}
+      </Head>
       <NextSeo
         title="Sekilas 13 | Informasi Covid 19"
         description="Informasi penyebaran virus corona di Indonesia dengan tampilan web dari Karya Ilmiah Remaja SMPN 13 Bekasi"

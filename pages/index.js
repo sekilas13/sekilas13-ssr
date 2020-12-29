@@ -17,6 +17,14 @@ const Navigasi = dynamic(() => import("../components/Navigasi"), {
   ssr: false
 });
 
+const PRELOAD_CSS = [
+  "b337d7e4fd55d8158c57.css", // Statistik.module.css
+  "bff4e0b56d744a9baaee.css", // Navigasi.module.css
+  "83a97b3f0d7136785509.css", // KataOrang.module.css
+  "4a538f63fdce4d556a39.css", // Gambar.module.css
+  "eb19916d289d060c1c49.css" // Footer.module.css
+];
+
 export default function Home() {
   const dark = useDarkMode(false, { storageKey: null, onChange: null });
   const theme = dark.value ? darkTheme : lightTheme;
@@ -24,6 +32,14 @@ export default function Home() {
   return (
     <>
       <Head>
+        {PRELOAD_CSS.map((css) => (
+          <link
+            rel="preload"
+            href={"/_next/static/css/" + css}
+            as="style"
+            key={css}
+          />
+        ))}
         <link
           rel="preload"
           href="https://fonts.googleapis.com/css2?family=Eczar:wght@600&family=Roboto&family=Kufam&display=swap"
