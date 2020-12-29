@@ -1,11 +1,10 @@
 const fs = require("fs");
 
-const domain = "https://sekilas13.vercel.app";
-
 const globby = require("globby");
 const prettier = require("prettier");
+const robotstxt = require("generate-robotstxt");
 
-(async () => {
+module.exports = async function (domain) {
   const prettierConfig = await prettier.resolveConfig("../.prettierrc.json");
   const date = new Date().toJSON();
 
@@ -35,13 +34,17 @@ const prettier = require("prettier");
             .join("")}
       </urlset>
     `;
-  const robots = `    
-    User-agent: *
-    Allow: /*
-    Disallow: /api/*
-
-    Sitemap: ${domain}/sitemap.xml
-  `;
+  const robots = await robotstxt({
+    policy: [
+      {
+        userAgent: "*",
+        allow: "/*",
+        disallow: "/api/*"
+      }
+    ],
+    sitemap: `${domain}/sitemap.xml`,
+    host: domain
+  });
 
   const formatted = prettier.format(sitemap, {
     ...prettierConfig,
@@ -50,4 +53,4 @@ const prettier = require("prettier");
 
   fs.writeFileSync("public/sitemap.xml", formatted);
   fs.writeFileSync("public/robots.txt", robots);
-})();
+};
