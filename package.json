@@ -39,6 +39,7 @@
     "webp-loader": "^0.6.0"
   },
   "devDependencies": {
+    "generate-robotstxt": "^8.0.3",
     "globby": "^11.0.1",
     "prettier": "^2.2.1"
   }
