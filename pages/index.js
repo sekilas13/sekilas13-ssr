@@ -3,6 +3,7 @@ import GlobalStyles from "../components/main/GlobalStyles";
 import { ThemeProvider } from "styled-components";
 import Content from "../components/main";
 import useDarkMode from "use-dark-mode";
+import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 
@@ -23,11 +24,6 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Karya Ilmiah Remaja SMP Negeri 13 Bekasi</title>
-        <meta
-          name="description"
-          content="Website resmi Karya Ilmiah Remaja SMPN 13 Bekasi. Karya Ilmiah Remaja ini adalah ekskul yang bertemakan tentang Sains dan Ilmu Pengetahuan Umum"
-        />
         <link
           rel="preload"
           href="https://fonts.googleapis.com/css2?family=Eczar:wght@600&family=Roboto&family=Kufam&display=swap"
@@ -38,9 +34,28 @@ export default function Home() {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Eczar:wght@600&family=Roboto&family=Kufam&display=swap"
         />
-
         <link rel="preconnect" href="https://fonts.gstatic.com" />
       </Head>
+      <NextSeo
+        title="Karya Ilmiah Remaja SMP Negeri 13 Bekasi"
+        description="Website resmi Karya Ilmiah Remaja SMPN 13 Bekasi. Karya Ilmiah Remaja ini adalah ekskul yang bertemakan tentang Sains dan Ilmu Pengetahuan Umum"
+        canonical={`${process.env.PUBLIC_URL}/`}
+        openGraph={{
+          url: `${process.env.PUBLIC_URL}/`,
+          title: "Karya Ilmiah Remaja SMP Negeri 13 Bekasi",
+          description:
+            "Website resmi Karya Ilmiah Remaja SMPN 13 Bekasi. Karya Ilmiah Remaja ini adalah ekskul yang bertemakan tentang Sains dan Ilmu Pengetahuan Umum",
+          images: [
+            {
+              url: `${process.env.PUBLIC_URL}/ogp-img.png`,
+              width: 256,
+              height: 256,
+              alt: "KIR Open Graph"
+            }
+          ],
+          site_name: "Sekilas 13"
+        }}
+      />
       <ThemeProvider theme={theme} prefetch={false}>
         <GlobalStyles />
         <Navigasi dark={dark} />
