@@ -38,6 +38,7 @@ export default function Covid({ covid }) {
           title: "Sekilas 13 | Informasi Covid 19",
           description:
             "Informasi penyebaran virus corona di Indonesia dengan tampilan web dari Karya Ilmiah Remaja SMPN 13 Bekasi",
+          type: "website",
           images: [
             {
               url: `${process.env.PUBLIC_URL}/ogp-img.png`,

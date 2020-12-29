@@ -45,6 +45,7 @@ export default function Home() {
           title: "Karya Ilmiah Remaja SMP Negeri 13 Bekasi",
           description:
             "Website resmi Karya Ilmiah Remaja SMPN 13 Bekasi. Karya Ilmiah Remaja ini adalah ekskul yang bertemakan tentang Sains dan Ilmu Pengetahuan Umum",
+          type: "website",
           images: [
             {
               url: `${process.env.PUBLIC_URL}/ogp-img.png`,
