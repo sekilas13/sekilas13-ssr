@@ -2,6 +2,15 @@ const withPWA = require("next-pwa");
 const withPlugins = require("next-compose-plugins");
 const optimizedImages = require("next-optimized-images");
 
+const dualENV = {
+  production: {
+    PUBLIC_URL: "http://sekilas13.vercel.app"
+  },
+  development: {
+    PUBLIC_URL: "http://localhost:3000"
+  }
+};
+
 module.exports = withPlugins(
   [
     [
@@ -50,6 +59,7 @@ module.exports = withPlugins(
       }
 
       return config;
-    }
+    },
+    env: dualENV[process.env.NODE_ENV]
   }
 );
