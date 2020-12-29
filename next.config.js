@@ -4,7 +4,7 @@ const optimizedImages = require("next-optimized-images");
 
 const dualENV = {
   production: {
-    PUBLIC_URL: "http://sekilas13.vercel.app"
+    PUBLIC_URL: "https://sekilas13.vercel.app"
   },
   development: {
     PUBLIC_URL: "http://localhost:3000"
