@@ -8,6 +8,10 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta
+          name="google-site-verification"
+          content="DFwLW8l_q7ZK1yuzt9Lp4HeCNWRP2-83BocCT8QeXpU"
+        />
       </Head>
       <Component {...pageProps} />
     </>
