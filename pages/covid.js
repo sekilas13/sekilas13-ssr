@@ -46,6 +46,7 @@ export default function Covid({ covid }) {
         ))}
 
         <meta name="theme-color" content={dark.value ? "#323234" : "#f0efeb"} />
+        <link rel="preconnect" href="https://indonesia-covid-19.mathdro.id" />
       </Head>
       <NextSeo
         title="Sekilas 13 | Informasi Covid 19"
