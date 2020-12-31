@@ -19,10 +19,14 @@ const Navigasi = dynamic(() => import("../components/Navigasi"), {
 });
 
 export async function getServerSideProps() {
-  const res = await fetch("https://indonesia-covid-19.mathdro.id/api/");
-  const data = await res.json();
+  try {
+    const res = await fetch("https://indonesia-covid-19.mathdro.id/api/");
+    const covid = await res.json();
 
-  return { props: { covid: data } };
+    return { props: { covid } };
+  } catch (error) {
+    return { props: { covid: { error } } };
+  }
 }
 
 const PRELOAD_CSS = [
