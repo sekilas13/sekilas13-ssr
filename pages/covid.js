@@ -8,6 +8,8 @@ import { darkTheme, lightTheme } from "../assets/data/Theme";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 const Navigasi = dynamic(() => import("../components/Navigasi"), {
   loading: () => (
     <nav
@@ -69,6 +71,12 @@ export default function Covid({ covid }) {
           site_name: "Sekilas 13"
         }}
       />
+      <style jsx global>{`
+        html {
+          font-family: "Roboto", sans-serif;
+          scroll-behavior: smooth;
+        }
+      `}</style>
       <ThemeProvider theme={theme} prefetch={false}>
         <GlobalStyles />
         <Navigasi dark={dark} />

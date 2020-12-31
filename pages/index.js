@@ -7,6 +7,8 @@ import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+
 const Navigasi = dynamic(() => import("../components/Navigasi"), {
   loading: () => (
     <nav
@@ -75,6 +77,12 @@ export default function Home() {
           site_name: "Sekilas 13"
         }}
       />
+      <style jsx global>{`
+        html {
+          font-family: "Roboto", sans-serif;
+          scroll-behavior: smooth;
+        }
+      `}</style>
       <ThemeProvider theme={theme} prefetch={false}>
         <GlobalStyles />
         <Navigasi dark={dark} />
