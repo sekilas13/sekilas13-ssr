@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CardWrapper from "./Custom/CardWrapper";
 import {
   faVirus,
@@ -8,10 +8,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { Row, Col } from "react-bootstrap";
 import { konversiBulan, updateTime } from "../../utils/konversiWaktu";
+import { exception } from "../../utils/gtag";
 
 export default function Card({ covidData }) {
   const [time] = useState(new Date(covidData.lastUpdate));
   const isError = covidData.error;
+
+  useEffect(
+    () => isError && exception({ error: covidData.message, fatal: false }),
+    []
+  );
 
   return (
     <section id="all">

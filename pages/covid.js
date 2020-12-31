@@ -25,7 +25,9 @@ export async function getServerSideProps() {
 
     return { props: { covid } };
   } catch (error) {
-    return { props: { covid: { error } } };
+    return {
+      props: { covid: { error: true, message: JSON.stringify(error) } }
+    };
   }
 }
 
