@@ -59,7 +59,10 @@ module.exports = withPlugins(
       if (isServer) {
         require("./scripts/sitemap-robots-generator")(env.PUBLIC_URL);
       }
-
+      config.module.rules.push({
+        test: /\.md$/,
+        use: "raw-loader"
+      });
       return config;
     },
     env
