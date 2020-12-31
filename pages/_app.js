@@ -6,6 +6,15 @@ import * as gtag from "../utils/gtag";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../styles/global.css";
 
+export function reportWebVitals({ id, name, label, value }) {
+  window.gtag("event", name, {
+    event_category: label === "web-vital" ? "Web Vitals" : "Next.js metric",
+    value: Math.round(name === "CLS" ? value * 1000 : value),
+    event_label: id,
+    non_interaction: true
+  });
+}
+
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
