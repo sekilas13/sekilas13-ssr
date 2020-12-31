@@ -1,4 +1,4 @@
-import axios from "axios";
+import fetch from "isomorphic-fetch";
 import dynamic from "next/dynamic";
 import useDarkMode from "use-dark-mode";
 import Content from "../components/covid";
@@ -19,9 +19,10 @@ const Navigasi = dynamic(() => import("../components/Navigasi"), {
 });
 
 export async function getServerSideProps() {
-  const res = await axios("https://indonesia-covid-19.mathdro.id/api/");
+  const res = await fetch("https://indonesia-covid-19.mathdro.id/api/");
+  const data = await res.json();
 
-  return { props: { covid: res.data } };
+  return { props: { covid: data } };
 }
 
 const PRELOAD_CSS = [
@@ -46,7 +47,7 @@ export default function Covid({ covid }) {
         ))}
 
         <meta name="theme-color" content={dark.value ? "#323234" : "#f0efeb"} />
-        <link rel="preconnect" href="https://indonesia-covid-19.mathdro.id" />
+        <link rel="preconnect" href="https://indonesia-covid-19.mathdro.id/" />
       </Head>
       <NextSeo
         title="Sekilas 13 | Informasi Covid 19"
