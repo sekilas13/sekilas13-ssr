@@ -34,14 +34,15 @@ export default function Covid() {
   return (
     <>
       <Head>
-        {PRELOAD_CSS.map((css) => (
-          <link
-            rel="preload"
-            href={"/_next/static/css/" + css}
-            as="style"
-            key={css}
-          />
-        ))}
+        {process.env.isProduction &&
+          PRELOAD_CSS.map((css) => (
+            <link
+              rel="preload"
+              href={"/_next/static/css/" + css}
+              as="style"
+              key={css}
+            />
+          ))}
 
         <meta name="theme-color" content={dark.value ? "#323234" : "#f0efeb"} />
         <link rel="preconnect" href="https://indonesia-covid-19.mathdro.id/" />

@@ -32,14 +32,15 @@ export default function Home() {
   return (
     <>
       <Head>
-        {PRELOAD_CSS.map((css) => (
-          <link
-            rel="preload"
-            href={"/_next/static/css/" + css}
-            as="style"
-            key={css}
-          />
-        ))}
+        {process.env.isProduction &&
+          PRELOAD_CSS.map((css) => (
+            <link
+              rel="preload"
+              href={"/_next/static/css/" + css}
+              as="style"
+              key={css}
+            />
+          ))}
         <link
           rel="preload"
           href="https://fonts.googleapis.com/css2?family=Eczar:wght@600&family=Roboto&family=Kufam&display=swap"
