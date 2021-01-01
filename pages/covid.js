@@ -1,4 +1,3 @@
-import fetch from "isomorphic-fetch";
 import dynamic from "next/dynamic";
 import useDarkMode from "use-dark-mode";
 import Content from "../components/covid";
@@ -7,6 +6,7 @@ import GlobalStyles from "../components/covid/GlobalStyles";
 import { darkTheme, lightTheme } from "../assets/data/Theme";
 import { NextSeo } from "next-seo";
 import Head from "next/head";
+import fetch from "axios";
 
 const Navigasi = dynamic(() => import("../components/Navigasi"), {
   loading: () => (
@@ -20,7 +20,7 @@ const Navigasi = dynamic(() => import("../components/Navigasi"), {
 
 export async function getServerSideProps() {
   try {
-    const res = await fetch("https://indonesia-covid-19.mathdro.id/api/");
+    const res = await fetch("https://indonesia-covid-19.mathdro.id/api");
     const covid = await res.json();
 
     return { props: { covid } };

@@ -19,8 +19,7 @@ export default function Card({ covidData }) {
       isError &&
       exception({
         error: JSON.parse(covidData.message).message,
-        fatal: false,
-        type: JSON.parse(covidData.message).type
+        fatal: false
       }),
     []
   );
