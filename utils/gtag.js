@@ -15,9 +15,10 @@ export const event = ({ action, category, label, value }) => {
   });
 };
 
-export const exception = ({ error, fatal }) => {
+export const exception = ({ error, fatal, type }) => {
   window.gtag("event", "exception", {
     description: error,
-    fatal
+    fatal,
+    type
   });
 };
