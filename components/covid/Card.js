@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { konversiBulan, updateTime } from "../../utils/konversiWaktu";
 import CardWrapper from "./Custom/CardWrapper";
 import {
   faVirus,
@@ -7,50 +7,70 @@ import {
   faSkullCrossbones
 } from "@fortawesome/free-solid-svg-icons";
 import { Row, Col } from "react-bootstrap";
-import { konversiBulan, updateTime } from "../../utils/konversiWaktu";
-import { exception } from "../../utils/gtag";
+import { useCallback } from "react";
+import useSWR from "swr";
 
-export default function Card({ covidData }) {
-  const [time] = useState(new Date(covidData.lastUpdate));
-  const isError = covidData.error;
+const TampilWaktu = ({ data, error }) => {
+  if (!error) {
+    if (data) {
+      const time = new Date(data.lastUpdate);
 
-  useEffect(
-    () =>
-      isError &&
-      exception({
-        error: JSON.parse(covidData.message).message,
-        fatal: false
-      }),
-    []
+      return (
+        <>
+          {time.getDate()} {konversiBulan(time.getMonth())} {time.getFullYear()}{" "}
+          Pukul {updateTime(time.getHours())}:{updateTime(time.getMinutes())}:
+          {updateTime(time.getSeconds())}.
+        </>
+      );
+    } else {
+      return <></>;
+    }
+  } else {
+    return <></>;
+  }
+};
+
+export default function Card() {
+  const { data, error } = useSWR(
+    "https://indonesia-covid-19.mathdro.id/api/dsaj"
   );
+
+  const labelGenerator = useCallback((label, index) => {
+    if (error) {
+      return label;
+    } else {
+      if (!data) return label;
+      return data[index].toLocaleString();
+    }
+  });
 
   return (
     <section id="all">
       <Row className="mt-4 justify-content-center">
         <Col lg={3} sm={5}>
           <CardWrapper
-            data={isError ? "===,===" : covidData.jumlahKasus.toLocaleString()}
+            data={labelGenerator("===,===", "jumlahKasus")}
             label="Positif"
             icon={faVirus}
           />
         </Col>
         <Col lg={3} sm={5}>
           <CardWrapper
-            data={isError ? "===,===" : covidData.perawatan.toLocaleString()}
+            data={labelGenerator("===,===", "perawatan")}
             label="Dirawat"
             icon={faHospital}
           />
         </Col>
         <Col lg={3} sm={5}>
           <CardWrapper
-            data={isError ? "===,===" : covidData.sembuh.toLocaleString()}
+            data={labelGenerator("===,===", "sembuh")}
             label="Sembuh"
             icon={faHandHoldingMedical}
           />
         </Col>
         <Col lg={3} sm={5}>
           <CardWrapper
-            data={isError ? "==,===" : covidData.meninggal.toLocaleString()}
+            data={labelGenerator("==,===", "meninggal")}
             label="Meninggal"
             icon={faSkullCrossbones}
           />
@@ -59,19 +79,12 @@ export default function Card({ covidData }) {
       <Row className="mt-2">
         <Col>
           <p>
-            {isError
-              ? "Mohon maaf, data tidak dapat ditampilkan."
-              : "Terakhir data diperbarui tanggal" + " "}
-            <>
-              {!isError && time && (
-                <>
-                  {time.getDate()} {konversiBulan(time.getMonth())}{" "}
-                  {time.getFullYear()} Pukul {updateTime(time.getHours())}:
-                  {updateTime(time.getMinutes())}:
-                  {updateTime(time.getSeconds())}.
-                </>
-              )}
-            </>
+            {!error &&
+              data &&
+              data.lastUpdate &&
+              "Terakhir data diperbarui tanggal" + " "}
+            {error && "Mohon maaf, data tidak dapat ditampilkan."}
+            <TampilWaktu data={data} error={error} />
           </p>
         </Col>
       </Row>

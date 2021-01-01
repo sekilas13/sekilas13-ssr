@@ -4,7 +4,9 @@ import Content from "../components/covid";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../components/covid/GlobalStyles";
 import { darkTheme, lightTheme } from "../assets/data/Theme";
+import { exception } from "../utils/gtag";
 import { NextSeo } from "next-seo";
+import { SWRConfig } from "swr";
 import Head from "next/head";
 import fetch from "axios";
 
@@ -18,25 +20,14 @@ const Navigasi = dynamic(() => import("../components/Navigasi"), {
   ssr: false
 });
 
-export async function getServerSideProps() {
-  try {
-    const res = await fetch("https://indonesia-covid-19.mathdro.id/api");
-    const covid = await res.json();
-
-    return { props: { covid } };
-  } catch (error) {
-    return {
-      props: { covid: { error: true, message: JSON.stringify(error) } }
-    };
-  }
-}
-
 const PRELOAD_CSS = [
   "b337d7e4fd55d8158c57.css", // Statistik.module.css
   "bff4e0b56d744a9baaee.css" // Navigasi.module.css
 ];
 
-export default function Covid({ covid }) {
+const fetcher = (...args) => fetch(...args).then((res) => res.data);
+
+export default function Covid() {
   const dark = useDarkMode(false, { storageKey: null, onChange: null });
   const theme = dark.value ? darkTheme : lightTheme;
 
@@ -79,7 +70,19 @@ export default function Covid({ covid }) {
       <ThemeProvider theme={theme} prefetch={false}>
         <GlobalStyles />
         <Navigasi dark={dark} />
-        <Content covidData={covid} theme={dark.value} />
+        <SWRConfig
+          value={{
+            fetcher,
+            onError: (error) => {
+              exception({
+                error: error.message,
+                fatal: false
+              });
+            }
+          }}
+        >
+          <Content theme={dark.value} />
+        </SWRConfig>
       </ThemeProvider>
     </>
   );
