@@ -31,9 +31,7 @@ const TampilWaktu = ({ data, error }) => {
 };
 
 export default function Card() {
-  const { data, error } = useSWR(
-    "https://indonesia-covid-19.mathdro.id/api/dsaj"
-  );
+  const { data, error } = useSWR("https://indonesia-covid-19.mathdro.id/api");
 
   const labelGenerator = useCallback((label, index) => {
     if (error) {
