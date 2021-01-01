@@ -27,6 +27,10 @@ const PRELOAD_CSS = [
 
 const fetcher = (...args) => fetch(...args).then((res) => res.data);
 
+const title = "Sekilas 13 | Informasi Covid 19";
+const description =
+  "Informasi penyebaran virus corona di Indonesia dengan tampilan web dari Karya Ilmiah Remaja SMPN 13 Bekasi";
+
 export default function Covid() {
   const dark = useDarkMode(false, { storageKey: null, onChange: null });
   const theme = dark.value ? darkTheme : lightTheme;
@@ -48,14 +52,13 @@ export default function Covid() {
         <link rel="preconnect" href="https://indonesia-covid-19.mathdro.id/" />
       </Head>
       <NextSeo
-        title="Sekilas 13 | Informasi Covid 19"
-        description="Informasi penyebaran virus corona di Indonesia dengan tampilan web dari Karya Ilmiah Remaja SMPN 13 Bekasi"
+        title={title}
+        description={description}
         canonical={`${process.env.PUBLIC_URL}/covid`}
         openGraph={{
           url: `${process.env.PUBLIC_URL}/covid`,
-          title: "Sekilas 13 | Informasi Covid 19",
-          description:
-            "Informasi penyebaran virus corona di Indonesia dengan tampilan web dari Karya Ilmiah Remaja SMPN 13 Bekasi",
+          title,
+          description,
           type: "website",
           images: [
             {

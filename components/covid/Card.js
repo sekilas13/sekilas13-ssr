@@ -81,7 +81,10 @@ export default function Card() {
               data &&
               data.lastUpdate &&
               "Terakhir data diperbarui tanggal" + " "}
-            {error && "Mohon maaf, data tidak dapat ditampilkan."}
+            {error &&
+              "Mohon maaf, data tidak dapat ditampilkan. " +
+                "Error: " +
+                error.message}
             <TampilWaktu data={data} error={error} />
           </p>
         </Col>
