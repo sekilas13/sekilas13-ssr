@@ -6,7 +6,7 @@ Anda bebas berkontribusi untuk blog web ini, tetapi dengan catatan :
 
 1. **Dilarang keras** menyebarkan informasi hoax, SARA, konten NSFW, atau apapun yang tidak pantas berada di ruang publik.
 2. Informasi yang diberikan bisa dipertanggung-jawabkan kebenarannya. Jika tidak postingan bisa dihapus.
-3. Jika tulisan anda berasal juga dari tulisan orang lain, Cantumkan link ke tulisan yang bersangkutan di akhir tulisan.
+3. Jika tulisan anda juga bersumber dari tulisan orang lain, Cantumkan link ke tulisan yang bersangkutan di akhir tulisan anda.
 
 ## Penulisan
 
@@ -44,4 +44,12 @@ File yang digunakan dalam penulisan blog adalah [Markdown](https://id.wikipedia.
 reactjs-hook.md
 ```
 
-Jangan menggunakan spasi dalam penamaan file, tulisan anda tidak bisa dibaca oleh sistem.
+Tambahkan file `.md` ke folder saat ini. Jangan menggunakan spasi dalam penamaan file, tulisan anda tidak bisa dibaca oleh sistem.
+
+### Draft
+
+Jika belum yakin dengan tulisan anda, bisa dibuat sebagai draft. Tambahkan prefix `DRAFT-` supaya bisa di-ignore oleh git.
+
+## Preview
+
+Jika anda mengerti cara menjalankan aplikasi [Node.JS](https://nodejs.org/), lakukan instalasi seperti biasa dan jalankan `npm run dev`. Buka website di http://localhost:3000/blog/ dan anda bisa langsung melihat hasilnya di web.
