@@ -29,7 +29,7 @@ const PRELOAD_CSS = [
 
 const fetcher = (...args) => fetch(...args).then((res) => res.data);
 
-const title = "Sekilas 13 | Informasi Covid 19";
+const title = "Informasi Covid 19 | Sekilas 13";
 const description =
   "Informasi penyebaran virus corona di Indonesia dengan tampilan web dari Karya Ilmiah Remaja SMPN 13 Bekasi";
 
