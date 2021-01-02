@@ -1,21 +1,7 @@
-import { useEffect, useState, useCallback } from "react";
-import axios from "axios";
-
-export default function Tbody() {
-  const [data, setData] = useState([]);
-
-  const setDataProvinsi = useCallback((data) => setData(data), [data]);
-
-  useEffect(() => {
-    axios
-      .get("https://indonesia-covid-19.mathdro.id/api/provinsi/")
-      .then((data) => data.data.data)
-      .then((result) => setDataProvinsi(result));
-  }, []);
-
+export default function Tbody({ data, error }) {
   return (
     <>
-      {!data && (
+      {!error && !data && (
         <>
           <tr>
             <td>1</td>
@@ -31,9 +17,9 @@ export default function Tbody() {
           </tr>
         </>
       )}
-      {data && (
+      {typeof data === "object" && (
         <>
-          {data
+          {data.data
             .filter((d) => d.provinsi !== "Indonesia")
             .filter((d) => d.provinsi !== null)
             .map((d, i) => (
@@ -45,6 +31,20 @@ export default function Tbody() {
                 <td>{Number(d.kasusMeni).toLocaleString()}</td>
               </tr>
             ))}
+        </>
+      )}
+      {error && !data && (
+        <>
+          <tr>
+            <td colSpan={5} className="text-center">
+              Mohon maaf, data tidak dapat ditampilkan.
+            </td>
+          </tr>
+          <tr>
+            <td colSpan={5} className="text-center">
+              Error: {error.message}
+            </td>
+          </tr>
         </>
       )}
     </>

@@ -3,6 +3,15 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import * as gtag from "../utils/gtag";
 
+export function reportWebVitals({ id, name, label, value }) {
+  window.gtag("event", name, {
+    event_category: label === "web-vital" ? "Web Vitals" : "Next.js metric",
+    value: Math.round(name === "CLS" ? value * 1000 : value),
+    event_label: id,
+    non_interaction: true
+  });
+}
+
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
@@ -20,10 +29,7 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width,initial-scale=1" />
-        <meta
-          name="google-site-verification"
-          content="DFwLW8l_q7ZK1yuzt9Lp4HeCNWRP2-83BocCT8QeXpU"
-        />
+        <meta name="google-site-verification" content={gtag.GOOGLE_VERIF} />
         <meta name="theme-color" content="#f0efeb" />
       </Head>
       <Component {...pageProps} />

@@ -27,6 +27,10 @@ const PRELOAD_CSS = [
   "eb19916d289d060c1c49.css" // Footer.module.css
 ];
 
+const title = "Karya Ilmiah Remaja SMP Negeri 13 Bekasi";
+const description =
+  "Website resmi Karya Ilmiah Remaja SMPN 13 Bekasi. Karya Ilmiah Remaja ini adalah ekskul yang bertemakan tentang Sains dan Ilmu Pengetahuan Umum";
+
 export default function Home() {
   const dark = useDarkMode(false, { storageKey: null, onChange: null });
   const theme = dark.value ? darkTheme : lightTheme;
@@ -34,14 +38,15 @@ export default function Home() {
   return (
     <>
       <Head>
-        {PRELOAD_CSS.map((css) => (
-          <link
-            rel="preload"
-            href={"/_next/static/css/" + css}
-            as="style"
-            key={css}
-          />
-        ))}
+        {process.env.isProduction &&
+          PRELOAD_CSS.map((css) => (
+            <link
+              rel="preload"
+              href={"/_next/static/css/" + css}
+              as="style"
+              key={css}
+            />
+          ))}
         <link
           rel="preload"
           href="https://fonts.googleapis.com/css2?family=Eczar:wght@600&family=Roboto&family=Kufam&display=swap"
@@ -57,14 +62,13 @@ export default function Home() {
         <meta name="theme-color" content={dark.value ? "#323234" : "#f0efeb"} />
       </Head>
       <NextSeo
-        title="Karya Ilmiah Remaja SMP Negeri 13 Bekasi"
-        description="Website resmi Karya Ilmiah Remaja SMPN 13 Bekasi. Karya Ilmiah Remaja ini adalah ekskul yang bertemakan tentang Sains dan Ilmu Pengetahuan Umum"
+        title={title}
+        description={description}
         canonical={process.env.PUBLIC_URL}
         openGraph={{
           url: process.env.PUBLIC_URL,
-          title: "Karya Ilmiah Remaja SMP Negeri 13 Bekasi",
-          description:
-            "Website resmi Karya Ilmiah Remaja SMPN 13 Bekasi. Karya Ilmiah Remaja ini adalah ekskul yang bertemakan tentang Sains dan Ilmu Pengetahuan Umum",
+          title,
+          description,
           type: "website",
           images: [
             {
