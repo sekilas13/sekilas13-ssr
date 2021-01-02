@@ -1,3 +1,4 @@
+import { Container, Row, Col, Card } from "react-bootstrap";
 import { NextSeo } from "next-seo";
 import matter from "gray-matter";
 
@@ -12,7 +13,43 @@ export default function Blog({ data }) {
 
   return (
     <>
-      <NextSeo title={title} description={description} />
+      <NextSeo
+        title={title}
+        description={description}
+        canonical={`${process.env.PUBLIC_URL}/blog`}
+        openGraph={{
+          url: `${process.env.PUBLIC_URL}/blog`,
+          title,
+          description,
+          type: "article",
+          images: [
+            {
+              url: `${process.env.PUBLIC_URL}/ogp-img.png`,
+              width: 256,
+              height: 256,
+              alt: "KIR Open Graph"
+            }
+          ],
+          site_name: "Sekilas 13"
+        }}
+      />
+      <Container className="mt-4">
+        <Row>
+          <Col>
+            <h1>Daftar Postingan</h1>
+          </Col>
+        </Row>
+        <Row className="mt-2">
+          {ListItems.map((blog) => (
+            <Col md={3} key={blog.Judul}>
+              <Card>
+                <Card.Header>{blog.Judul}</Card.Header>
+                <Card.Body>{blog.Deskripsi}</Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+      </Container>
     </>
   );
 }
