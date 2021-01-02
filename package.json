@@ -16,6 +16,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.5.3",
     "canvas": "^2.6.1",
+    "github-markdown-css": "^4.0.0",
     "gray-matter": "^4.0.2",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-optipng": "^8.0.0",
