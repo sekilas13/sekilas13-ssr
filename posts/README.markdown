@@ -18,7 +18,7 @@ Metadata adalah informasi tulisan yang wajib anda cantumkan. Format metadata sep
 ---
 Judul: <Judul>
 Deskripsi: <Deskripsi singkat tulisan>
-penulis: <Nama anda>
+Penulis: <Nama anda>
 Tanggal: <Tanggal>-<Bulan>-<Tahun>
 ---
 ```
@@ -29,7 +29,7 @@ Sebagai contoh seperti ini :
 ---
 Judul: Postingan Kedua
 Deskripsi: Postingan kedua dimana ini cuman contoh
-penulis: Ezra Khairan Permana
+Penulis: Ezra Khairan Permana
 Tanggal: 2-Januari-2021
 ---
 ```
