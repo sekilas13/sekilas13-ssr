@@ -10,23 +10,37 @@ module.exports = async function (domain) {
 
   const pages = await globby([
     "pages/**/*{.js,.mdx}",
+    "!pages/blog/[post].js",
     "!pages/_*.js",
     "!pages/api"
   ]);
+  const posts = await globby(["posts/*.md", "!posts/DRAFT-*.md"]);
   const sitemap = `
       <?xml version="1.0" encoding="UTF-8"?>
       <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
           ${pages
             .map((page) => {
-              const path = page
+              const route = page
                 .replace("pages", "")
                 .replace(".js", "")
-                .replace(".mdx", "");
-              const route = path === "/index" ? "" : path;
+                .replace(".mdx", "")
+                .replace("/index", "");
 
               return `
                 <url>
                   <loc>${`${domain}${route}`}</loc>
+                  <lastmod>${date}</lastmod>
+                </url>
+              `;
+            })
+            .join("")}
+          ${posts
+            .map((post) => {
+              const path = post.replace("posts/", "").replace(".md", "");
+
+              return `
+                <url>
+                  <loc>${`${domain}/blog/${path}`}</loc>
                   <lastmod>${date}</lastmod>
                 </url>
               `;
