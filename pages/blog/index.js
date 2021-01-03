@@ -1,6 +1,7 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { NextSeo } from "next-seo";
 import matter from "gray-matter";
+import Link from "next/link";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -8,9 +9,6 @@ const title = "Our Blog | Sekilas 13";
 const description = "";
 
 export default function Blog({ data }) {
-  const RealData = data.map((blog) => matter(blog));
-  const ListItems = RealData.map((listItem) => listItem.data);
-
   return (
     <>
       <NextSeo
@@ -40,11 +38,16 @@ export default function Blog({ data }) {
           </Col>
         </Row>
         <Row className="mt-2">
-          {ListItems.map((blog) => (
-            <Col md={3} key={blog.Judul}>
+          {data.map(({ content, redirect }) => (
+            <Col md={3} key={content.Judul}>
               <Card>
-                <Card.Header>{blog.Judul}</Card.Header>
-                <Card.Body>{blog.Deskripsi}</Card.Body>
+                <Card.Header>{content.Judul}</Card.Header>
+                <Card.Body>{content.Deskripsi}</Card.Body>
+                <Card.Footer>
+                  <Link href={process.env.PUBLIC_URL + "/blog/" + redirect}>
+                    <a>Baca &raquo;</a>
+                  </Link>
+                </Card.Footer>
               </Card>
             </Col>
           ))}
@@ -67,7 +70,9 @@ export async function getStaticProps() {
       encoding: "utf-8"
     });
 
-    return rawContent;
+    const content = matter(rawContent).data;
+    const redirect = blog.split(".md")[0];
+    return { content, redirect };
   });
 
   return {
