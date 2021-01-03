@@ -2,6 +2,7 @@ import fs from "fs";
 import { BlogJsonLd, NextSeo } from "next-seo";
 import ReactMarkdown from "react-markdown";
 import matter from "gray-matter";
+import Head from "next/head";
 
 import "github-markdown-css";
 
@@ -11,7 +12,29 @@ export default function Read({ content, data, url }) {
 
   return (
     <>
-      <NextSeo title={Judul} description={Deskripsi} canonical={fullUrl} />
+      <Head>
+        <meta name="author" content={Penulis} />
+      </Head>
+      <NextSeo
+        title={Judul}
+        description={Deskripsi}
+        canonical={fullUrl}
+        openGraph={{
+          url: fullUrl,
+          title: Judul,
+          description: Deskripsi,
+          type: "article",
+          images: [
+            {
+              url: `${process.env.PUBLIC_URL}/ogp-img.png`,
+              width: 256,
+              height: 256,
+              alt: "KIR Open Graph"
+            }
+          ],
+          site_name: "Sekilas 13"
+        }}
+      />
       <BlogJsonLd
         url={fullUrl}
         title={Judul}
