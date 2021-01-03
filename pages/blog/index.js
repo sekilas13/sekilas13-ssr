@@ -71,7 +71,7 @@ export async function getStaticProps() {
     });
 
     const content = matter(rawContent).data;
-    const redirect = blog.split(".md")[0];
+    const redirect = blog.replace(".md", "");
     return { content, redirect };
   });
 
