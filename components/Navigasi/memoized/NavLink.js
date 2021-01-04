@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { memo, useState } from "react";
 import Nav from "react-bootstrap/Nav";
+import Link from "next/link";
 
 const List = {
   "/": [
@@ -25,12 +26,19 @@ function NavLink({ getHeight, expanded, setExpandClose }) {
     <Nav className="ml-auto text-center" activeKey={key}>
       {renderer && (
         <>
-          <Nav.Link href={to}>
-            {pathname === "/" ? "Informasi Covid 19" : "Halaman Utama"}
-          </Nav.Link>
+          <Link href={to} passHref>
+            <Nav.Link>
+              {pathname === "/" ? "Informasi Covid 19" : "Halaman Utama"}
+            </Nav.Link>
+          </Link>
+          <Link href="/blog" passHref>
+            <Nav.Link>Blog</Nav.Link>
+          </Link>
           {renderer.map((link, i) => {
             const [href] = useState(
-              pathname === "/" ? link.to.split(".")[1] : link.to.split("#")[1]
+              pathname === "/"
+                ? link.to.replace(".", "")
+                : link.to.replace("#", "")
             );
 
             const handleLink = (e) => {
