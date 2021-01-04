@@ -14,7 +14,11 @@ module.exports = async function (domain) {
     "!pages/_*.js",
     "!pages/api"
   ]);
-  const posts = await globby(["posts/*.md", "!posts/DRAFT-*.md"]);
+  const posts = await globby([
+    "posts/*.md",
+    "!posts/DRAFT-*.md",
+    "!posts/TEST-*.md"
+  ]);
   const sitemap = `
       <?xml version="1.0" encoding="UTF-8"?>
       <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
