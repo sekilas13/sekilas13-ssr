@@ -3,9 +3,17 @@ const fs = require("fs");
 const globby = require("globby");
 const prettier = require("prettier");
 const robotstxt = require("generate-robotstxt");
+const { resolve } = require("path");
 
 module.exports = async function (domain) {
-  const prettierConfig = await prettier.resolveConfig("../.prettierrc.json");
+  const prettierConfig = await prettier.resolveConfig(
+    resolve(".prettierrc.json")
+  );
+  const postsIgnore = fs
+    .readFileSync(resolve("posts/.gitignore"), "utf8")
+    .split("\n")
+    .map((post) => "!posts/" + post);
+
   const date = new Date().toJSON();
 
   const pages = await globby([
@@ -14,11 +22,8 @@ module.exports = async function (domain) {
     "!pages/_*.js",
     "!pages/api"
   ]);
-  const posts = await globby([
-    "posts/*.md",
-    "!posts/DRAFT-*.md",
-    "!posts/TEST-*.md"
-  ]);
+  const posts = await globby(["posts/*.md", ...postsIgnore]);
+
   const sitemap = `
       <?xml version="1.0" encoding="UTF-8"?>
       <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
