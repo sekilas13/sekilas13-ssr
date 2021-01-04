@@ -3,10 +3,11 @@ import { BlogJsonLd, NextSeo } from "next-seo";
 import ReactMarkdown from "react-markdown";
 import matter from "gray-matter";
 import Head from "next/head";
+import moment from "moment";
 
 import "github-markdown-css";
 
-export default function Read({ content, data, url }) {
+export default function Read({ content, data, url, tanggal }) {
   const { Judul, Deskripsi, Penulis } = data;
   const fullUrl = process.env.PUBLIC_URL + "/blog/" + url;
 
@@ -40,6 +41,7 @@ export default function Read({ content, data, url }) {
         title={Judul}
         description={Deskripsi}
         authorName={Penulis}
+        datePublished={tanggal}
       />
       <article className="markdown-body">
         <ReactMarkdown escapeHtml={true} source={content} />
@@ -86,12 +88,16 @@ export async function getStaticProps({ params: { post } }) {
   });
 
   const parsed = matter(md);
+  const tanggal = moment(parsed.data.Tanggal, "DD-MMM-YYYY HH:mm").toISOString(
+    true
+  );
 
   return {
     props: {
       content: parsed.content,
       data: parsed.data,
-      url: post
+      url: post,
+      tanggal
     }
   };
 }
