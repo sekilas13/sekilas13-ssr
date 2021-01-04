@@ -40,8 +40,8 @@ function Navigasi({ dark }) {
       ref={ref}
     >
       <Container>
-        <Link href="/">
-          <Navbar.Brand href="/">KIR</Navbar.Brand>
+        <Link href="/" passHref>
+          <Navbar.Brand>KIR</Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="navigasi-nav" />
         <Navbar.Collapse id="navigasi-nav">
