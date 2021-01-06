@@ -1,9 +1,10 @@
 import fs from "fs";
 import { BlogJsonLd, NextSeo } from "next-seo";
+import Code from "../../components/blog/Code";
 import ReactMarkdown from "react-markdown";
+import moment from "moment-timezone";
 import matter from "gray-matter";
 import Head from "next/head";
-import moment from "moment";
 
 import "github-markdown-css";
 
@@ -44,7 +45,11 @@ export default function Read({ content, data, url, tanggal }) {
         datePublished={tanggal}
       />
       <article className="markdown-body">
-        <ReactMarkdown escapeHtml={true} source={content} />
+        <ReactMarkdown
+          escapeHtml={true}
+          source={content}
+          renderers={{ code: Code }}
+        />
       </article>
       <style jsx scoped>{`
         .markdown-body {
@@ -88,9 +93,9 @@ export async function getStaticProps({ params: { post } }) {
   });
 
   const parsed = matter(md);
-  const tanggal = moment(parsed.data.Tanggal, "DD-MMM-YYYY HH:mm").toISOString(
-    true
-  );
+  const tanggal = moment(parsed.data.Tanggal, "DD-MMM-YYYY HH:mm")
+    .tz("Asia/Jakarta")
+    .toISOString(true);
 
   return {
     props: {
