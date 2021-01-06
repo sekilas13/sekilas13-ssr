@@ -11,9 +11,15 @@ export default class Root extends Document {
     return (
       <Html lang="id">
         <Head>
-          <link rel="icon" href="/favicon.ico" />
-          <link rel="apple-touch-icon" href="/logo192-apple-touch.png" />
-          <link rel="manifest" href="manifest.json" />
+          <link rel="icon" href={process.env.PUBLIC_URL + "/favicon.ico"} />
+          <link
+            rel="apple-touch-icon"
+            href={process.env.PUBLIC_URL + "/logo192-apple-touch.png"}
+          />
+          <link
+            rel="manifest"
+            href={process.env.PUBLIC_URL + "/manifest.json"}
+          />
 
           <script
             async
