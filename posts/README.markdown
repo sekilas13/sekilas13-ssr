@@ -19,14 +19,16 @@ Metadata adalah informasi tulisan yang wajib anda cantumkan. Format metadata sep
 Judul: <Judul>
 Deskripsi: <Deskripsi singkat tulisan>
 Penulis: <Nama anda>
-Tanggal: <Tanggal>-<Bulan>-<Tahun> <Jam>:<Menit>
+TanggalDibuat: <Tanggal>-<Bulan>-<Tahun> <Jam>:<Menit>
+TanggalDiubah: <Tanggal>-<Bulan>-<Tahun> <Jam>:<Menit>
 ---
 ```
 
 Format penanggalan :
 
 ```
-Tanggal: DD-MM-YYYY HH:MM
+TanggalDibuat: DD-MM-YYYY HH:MM
+TanggalDiubah: DD-MM-YYYY HH:MM
 ```
 
 Keterangan:
@@ -44,11 +46,12 @@ Sebagai contoh seperti ini :
 Judul: Postingan Kedua
 Deskripsi: Postingan kedua dimana ini cuman contoh
 Penulis: Ezra Khairan Permana
-Tanggal: 2-1-2021 14:42
+TanggalBuat: 2-1-2021 14:42
+TanggalDiubah: 7-1-2021 10:43
 ---
 ```
 
-Judul dan deskripsi nantinya akan digunakan di website, Jadi usahakan Judul singkat tetapi langsung ke Topik dari tulisan tersebut.
+Properti `TanggalDiubah` ditambahkan jika ada perubahan pada konten, jika tulisan tersebut tulisan baru, tidak usah menambahkan `TanggalDiubah`. Judul dan deskripsi nantinya akan digunakan di website, Jadi usahakan Judul singkat tetapi langsung ke Topik dari tulisan tersebut.
 
 > Waktu yang digunakan adalah [Waktu Indonesia Barat UTC+07:00](https://id.wikipedia.org/wiki/UTC%2B07:00)
 
