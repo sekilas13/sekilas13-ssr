@@ -8,7 +8,16 @@ import Head from "next/head";
 
 import "github-markdown-css";
 
-export default function Read({ content, data, url, tanggal }) {
+const ISOString = (tanggal) =>
+  moment(tanggal, "DD-MMM-YYYY HH:mm").tz("Asia/Jakarta").toISOString(true);
+
+export default function Read({
+  content,
+  data,
+  url,
+  tanggalDibuat,
+  tanggalDiubah
+}) {
   const { Judul, Deskripsi, Penulis } = data;
   const fullUrl = process.env.PUBLIC_URL + "/blog/" + url;
 
@@ -42,7 +51,8 @@ export default function Read({ content, data, url, tanggal }) {
         title={Judul}
         description={Deskripsi}
         authorName={Penulis}
-        datePublished={tanggal}
+        datePublished={tanggalDibuat}
+        dateModified={tanggalDiubah && tanggalDiubah}
       />
       <article className="markdown-body">
         <ReactMarkdown
@@ -93,16 +103,19 @@ export async function getStaticProps({ params: { post } }) {
   });
 
   const parsed = matter(md);
-  const tanggal = moment(parsed.data.Tanggal, "DD-MMM-YYYY HH:mm")
-    .tz("Asia/Jakarta")
-    .toISOString(true);
+
+  const tanggalDibuat = ISOString(parsed.data.TanggalDibuat);
+  const tanggalDiubah = parsed.data.TanggalDiubah
+    ? ISOString(parsed.data.TanggalDiubah)
+    : undefined;
 
   return {
     props: {
       content: parsed.content,
       data: parsed.data,
       url: post,
-      tanggal
+      tanggalDibuat,
+      tanggalDiubah
     }
   };
 }
