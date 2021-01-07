@@ -1,8 +1,9 @@
 ---
-Judul: Instalasi Telegram Desktop di MX Linux 19.2
-Deskripsi: Tutorial bagaimana cara menginstall Telegram di MX Linux 19.2 Patito Feo dengan benar.
+Judul: Instalasi Telegram Desktop di MX Linux 19.3
+Deskripsi: Tutorial bagaimana cara menginstall Telegram di MX Linux 19.3 Patito Feo dengan benar.
 Penulis: Ezra Khairan Permana
-Tanggal: 5-1-2021 21:55
+TanggalDibuat: 5-1-2021 21:55
+TanggalDiubah: 7-1-2021 10:43
 ---
 
 # Apa itu Telegram
