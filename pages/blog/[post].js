@@ -52,7 +52,7 @@ export default function Read({
         description={Deskripsi}
         authorName={Penulis}
         datePublished={tanggalDibuat}
-        dateModified={tanggalDiubah && tanggalDiubah}
+        dateModified={tanggalDiubah !== null ? tanggalDiubah : undefined}
       />
       <article className="markdown-body">
         <ReactMarkdown
@@ -107,7 +107,7 @@ export async function getStaticProps({ params: { post } }) {
   const tanggalDibuat = ISOString(parsed.data.TanggalDibuat);
   const tanggalDiubah = parsed.data.TanggalDiubah
     ? ISOString(parsed.data.TanggalDiubah)
-    : undefined;
+    : null;
 
   return {
     props: {
