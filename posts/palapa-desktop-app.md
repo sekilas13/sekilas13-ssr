@@ -3,6 +3,7 @@ Judul: Instalasi Palapa versi Desktop
 Deskripsi: Penjelasan tentang cara bagaimana melakukan instalasi Palapa Chat App versi desktop, terkhusus untuk sistem operasi linux.
 Penulis: Ezra Khairan Permana
 TanggalDibuat: 12-1-2021 22:09
+TanggalDiubah: 13-1-2021 10:28
 ---
 
 # Palapa, apa itu ?
@@ -20,7 +21,7 @@ Untuk sistem operasi Windows dan OS X (mac), instalasi tergolong cukup mudah. Ti
 
 ### Linux
 
-Untuk sistem operasi linux umum, proses ini agak berbeda dengan yang lain, karena ini sepertinya versi `linux-unpacked` dari aplikasi (ElectronJS)[https://www.electronjs.org/] yang sudah di build (dilihat dari hasil extract download, ada sebuah file lisensi `LICENSE.electron.txt`, dimana electron sendiri dibuat oleh github). Ikuti langkah instalasi berikut ini.
+Untuk sistem operasi linux umum, proses ini agak berbeda dengan yang lain, karena ini sepertinya versi `linux-unpacked` dari aplikasi [ElectronJS](https://www.electronjs.org/) yang sudah di build (dilihat dari hasil extract download, ada sebuah file lisensi `LICENSE.electron.txt`, dimana electron sendiri dibuat oleh github). Ikuti langkah instalasi berikut ini.
 
 1. #### Buka Terminal
 
@@ -34,7 +35,7 @@ Anda bisa mendownload file dengan klik file langsung di browser, tapi saya merek
 wget https://landing.xecure.world/palapa/linux/palapa-desktop-release-2.1.2-756079983-24-Sep-2020-17-41.tar.gz
 ```
 
-> Catatan: Cek kembali ke link instalasi, sewaktu-waktu nama file akan berubah.
+> Catatan: Cek kembali ke link unduhan, sewaktu-waktu nama file akan berubah.
 
 3. #### Extract file .tar.gz
 
