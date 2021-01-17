@@ -27,7 +27,7 @@ const Tbody = dynamic(() => import("./lazy/Tbody"), {
 
 export default function Tabel({ theme }) {
   const { data, error } = useSWR(
-    "https://indonesia-covid-19.mathdro.id/api/provinsi/"
+    "https://apicovid19indonesia-v2.vercel.app/api/indonesia/provinsi"
   );
   const [tema, setTema] = useState(false);
   useEffect(() => setTema(theme), [theme]);

@@ -1,3 +1,5 @@
+import Pascalize from "../../../utils/Pascalize";
+
 export default function Tbody({ data, error }) {
   return (
     <>
@@ -17,22 +19,16 @@ export default function Tbody({ data, error }) {
           </tr>
         </>
       )}
-      {typeof data === "object" && (
-        <>
-          {data.data
-            .filter((d) => d.provinsi !== "Indonesia")
-            .filter((d) => d.provinsi !== null)
-            .map((d, i) => (
-              <tr key={d.kodeProvi}>
-                <td>{i + 1}</td>
-                <td>{d.provinsi}</td>
-                <td>{Number(d.kasusPosi).toLocaleString()}</td>
-                <td>{Number(d.kasusSemb).toLocaleString()}</td>
-                <td>{Number(d.kasusMeni).toLocaleString()}</td>
-              </tr>
-            ))}
-        </>
-      )}
+      {typeof data === "object" &&
+        data.map((d, i) => (
+          <tr key={i}>
+            <td>{i + 1}</td>
+            <td>{Pascalize(d.provinsi).replace("Dki", "DKI")}</td>
+            <td>{Number(d.kasus).toLocaleString()}</td>
+            <td>{Number(d.sembuh).toLocaleString()}</td>
+            <td>{Number(d.meninggal).toLocaleString()}</td>
+          </tr>
+        ))}
       {error && !data && (
         <>
           <tr>

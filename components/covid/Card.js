@@ -31,7 +31,9 @@ const TampilWaktu = ({ data, error }) => {
 };
 
 export default function Card() {
-  const { data, error } = useSWR("https://indonesia-covid-19.mathdro.id/api");
+  const { data, error } = useSWR(
+    "https://apicovid19indonesia-v2.vercel.app/api/indonesia"
+  );
 
   const labelGenerator = useCallback((label, index) => {
     if (error) {
@@ -47,14 +49,14 @@ export default function Card() {
       <Row className="mt-4 justify-content-center">
         <Col lg={3} sm={5}>
           <CardWrapper
-            data={labelGenerator("===,===", "jumlahKasus")}
+            data={labelGenerator("===,===", "positif")}
             label="Positif"
             icon={faVirus}
           />
         </Col>
         <Col lg={3} sm={5}>
           <CardWrapper
-            data={labelGenerator("===,===", "perawatan")}
+            data={labelGenerator("===,===", "dirawat")}
             label="Dirawat"
             icon={faHospital}
           />
