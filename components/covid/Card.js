@@ -49,7 +49,7 @@ export default function Card() {
       <Row className="mt-4 justify-content-center">
         <Col lg={3} sm={5}>
           <CardWrapper
-            data={labelGenerator("===,===", "positif")}
+            data={labelGenerator("=,===,===", "positif")}
             label="Positif"
             icon={faVirus}
           />
