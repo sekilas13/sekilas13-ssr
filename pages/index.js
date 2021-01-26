@@ -23,7 +23,7 @@ const PRELOAD_CSS = [
   "b337d7e4fd55d8158c57.css", // Statistik.module.css
   "bff4e0b56d744a9baaee.css", // Navigasi.module.css
   "83a97b3f0d7136785509.css", // KataOrang.module.css
-  // "4a538f63fdce4d556a39.css", // Gambar.module.css
+  "c65c62a6ff809d085b57.css", // Gambar.module.css
   "eb19916d289d060c1c49.css" // Footer.module.css
 ];
 
