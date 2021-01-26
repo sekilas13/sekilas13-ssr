@@ -3,7 +3,7 @@ Judul: Instalasi Palapa versi Desktop
 Deskripsi: Penjelasan tentang cara bagaimana melakukan instalasi Palapa Chat App versi desktop, terkhusus untuk sistem operasi linux.
 Penulis: Ezra Khairan Permana
 TanggalDibuat: 12-1-2021 22:09
-TanggalDiubah: 13-1-2021 10:28
+TanggalDiubah: 26-1-2021 08:56
 ---
 
 # Palapa, apa itu ?
@@ -95,3 +95,4 @@ palapa
 
 - [https://www.youtube.com/watch?v=u134QX3ZKg8](https://www.youtube.com/watch?v=u134QX3ZKg8)
 - [https://www.youtube.com/watch?v=QVrhtoVQHko](https://www.youtube.com/watch?v=QVrhtoVQHko)
+- [http://onnocenter.or.id/wiki/index.php/Palapa:\_Perbandingan_WA_Telegram_Signal_Palapa](http://onnocenter.or.id/wiki/index.php/Palapa:_Perbandingan_WA_Telegram_Signal_Palapa)
