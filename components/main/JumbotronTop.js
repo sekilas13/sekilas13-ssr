@@ -4,6 +4,7 @@ import { useRef, useEffect } from "react";
 import ProgressiveImage from "react-progressive-image";
 import { Jumbotron, Container, Row } from "react-bootstrap";
 import styles from "../../styles/main/Jumbotron.module.css";
+import { source, placeholder } from "../../assets/data/GambarJumbotron";
 
 const Img = dynamic(() => import("./lazy/JumbonImg"), {
   loading: ({ src, loading }) => (
@@ -11,18 +12,18 @@ const Img = dynamic(() => import("./lazy/JumbonImg"), {
       src={src}
       style={{
         filter: loading ? "blur(10px)" : "none",
-        transition: "all 0.40s linear",
+        transition: "all 0.40s linear"
       }}
       className={`${styles.gambar} img-fluid text-center rounded`}
       alt="Logo KIR"
     />
-  ),
+  )
 });
 const Hasatu = dynamic(() => import("./lazy/JumbonHasatu"), {
-  loading: () => <h1 className={styles.hasatu}>Sekilas !</h1>,
+  loading: () => <h1 className={styles.hasatu}>Sekilas !</h1>
 });
 const Paragrap = dynamic(() => import("./lazy/JumbonParagrap"), {
-  loading: () => <p className={styles.paragrap}>Semangat KIR Tiga Belas !</p>,
+  loading: () => <p className={styles.paragrap}>Semangat KIR Tiga Belas !</p>
 });
 
 export default function JumbotronTop() {
@@ -49,10 +50,7 @@ export default function JumbotronTop() {
     <Jumbotron fluid className={styles.jumbotron} ref={ref}>
       <Container className={styles.container}>
         <Row className="justify-content-center">
-          <ProgressiveImage
-            src={require("../../assets/Img/KIR/KIR.png?resize&size=228")}
-            placeholder={require("../../assets/Img/KIR/KIR.png?resize&size=15")}
-          >
+          <ProgressiveImage src={source} placeholder={placeholder}>
             {(src, loading) => (
               <Img src={src} loading={loading} offset={offset} />
             )}
