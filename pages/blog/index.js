@@ -3,10 +3,12 @@ import { NextSeo } from "next-seo";
 import matter from "gray-matter";
 import Link from "next/link";
 
+import style from "../../styles/blog/Posts.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const title = "Our Blog | Sekilas 13";
-const description = "";
+const description =
+  "Daftar tulisan blog Karya Ilmiah Remaja SMP Negeri 13 Bekasi";
 
 export default function Blog({ data }) {
   return (
@@ -39,8 +41,8 @@ export default function Blog({ data }) {
         </Row>
         <Row className="mt-2">
           {data.map(({ content, redirect }) => (
-            <Col md={3} key={content.Judul}>
-              <Card>
+            <Col md={3} sm={6} key={content.Judul}>
+              <Card className={style.cardResponsive}>
                 <Card.Header>{content.Judul}</Card.Header>
                 <Card.Body>{content.Deskripsi}</Card.Body>
                 <Card.Footer>
