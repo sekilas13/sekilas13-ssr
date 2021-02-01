@@ -1,12 +1,29 @@
 import fs from "fs";
+import dynamic from "next/dynamic";
 import { BlogJsonLd, NextSeo } from "next-seo";
-import Code from "../../components/blog/Code";
 import ReactMarkdown from "react-markdown";
 import moment from "moment-timezone";
 import matter from "gray-matter";
 import Head from "next/head";
 
 import "github-markdown-css";
+const Code = dynamic(() => import("../../components/blog/Code"), {
+  ssr: false,
+  loading: () => (
+    <pre
+      style={{
+        background: "rgb(245, 242, 240)",
+        minHeight: "1.25em",
+        margin: "0.5em 0px",
+        lineHeight: "1.5",
+        padding: "1em",
+        width: "100%"
+      }}
+    >
+      <span>&zwnj;</span>
+    </pre>
+  )
+});
 
 const ISOString = (tanggal) =>
   moment(tanggal, "DD-MMM-YYYY HH:mm").tz("Asia/Jakarta").toISOString(true);
