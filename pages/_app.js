@@ -1,7 +1,8 @@
 import Head from "next/head";
 import { useEffect } from "react";
-import { useRouter } from "next/router";
 import * as gtag from "../utils/gtag";
+import { useRouter } from "next/router";
+import ProgressLoad from "../components/ProgressLoad";
 
 export function reportWebVitals({ id, name, label, value }) {
   window.gtag("event", name, {
@@ -32,6 +33,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="google-site-verification" content={gtag.GOOGLE_VERIF} />
         <meta name="theme-color" content="#f0efeb" />
       </Head>
+      <ProgressLoad />
       <Component {...pageProps} />
     </>
   );

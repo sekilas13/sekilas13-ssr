@@ -27,6 +27,7 @@
     "next-optimized-images": "^2.6.2",
     "next-pwa": "^5.0.1",
     "next-seo": "^4.17.0",
+    "nprogress": "^0.2.0",
     "raw-loader": "^4.0.2",
     "react": "17.0.1",
     "react-bootstrap": "^1.4.0",
