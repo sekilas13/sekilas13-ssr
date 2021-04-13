@@ -1,5 +1,4 @@
 const satuan = [
-  "row",
   "justify-content-center",
   "show",
   "hide",

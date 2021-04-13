@@ -1,6 +1,4 @@
 const withPWA = require("next-pwa");
-const withCss = require("@zeit/next-css");
-const withPurgeCss = require("next-purgecss");
 const withPlugins = require("next-compose-plugins");
 const optimizedImages = require("next-optimized-images");
 
@@ -57,18 +55,6 @@ module.exports = withPlugins(
           dest: "public"
         }
       }
-    ],
-    [
-      withCss,
-      [
-        withPurgeCss({
-          purgeCssEnabled: ({ dev, isServer }) => !dev && !isServer,
-          purgeCssPaths: ["pages/**/*", "components/**/*"],
-          purgeCss: {
-            whitelist: () => whitelist
-          }
-        })
-      ]
     ]
   ],
   {

@@ -50,11 +50,9 @@
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^4.0.0",
-    "@zeit/next-css": "^1.0.1",
     "autoprefixer": "^10.2.3",
     "generate-robotstxt": "^8.0.3",
     "globby": "^11.0.1",
-    "next-purgecss": "^4.0.0",
     "postcss": "^8.2.4",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^6.7.0",
