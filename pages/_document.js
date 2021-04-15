@@ -1,10 +1,27 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { GA_TRACKING_ID } from "../utils/gtag";
+import { minify } from "terser";
+
+const getScript = async () => {
+  const code = `
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '${GA_TRACKING_ID}', {
+      page_path: window.location.pathname,
+    });
+  `;
+
+  if (process.env.NODE_ENV === "development") return code;
+  const minified = await minify(code);
+  return minified.code;
+};
 
 export default class Root extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
-    return { ...initialProps };
+    const gtagScript = await getScript();
+    return { ...initialProps, gtagScript };
   }
 
   render() {
@@ -27,14 +44,7 @@ export default class Root extends Document {
           />
           <script
             dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GA_TRACKING_ID}', {
-                  page_path: window.location.pathname,
-                });
-              `
+              __html: this.props.gtagScript
             }}
           />
         </Head>
