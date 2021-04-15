@@ -1,16 +1,16 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import NProgress from "nprogress";
 import Router from "next/router";
 
 let timer = null;
 
 export default function ProgressLoad() {
-  const [state] = useState({
+  const state = useMemo(() => ({
     color: "#29D",
     startPosition: 0.3,
     stopDelayMs: 200,
     height: 3
-  });
+  }));
 
   const routeChangeStart = useCallback(() => {
     NProgress.set(state.startPosition);

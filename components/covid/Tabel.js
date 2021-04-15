@@ -1,5 +1,6 @@
+import { DarkModeContext } from "../../context/darkMode";
 import { Table, Row, Col } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import dynamic from "next/dynamic";
 import useSWR from "swr";
 
@@ -25,12 +26,11 @@ const Tbody = dynamic(() => import("./lazy/Tbody"), {
   ssr: false
 });
 
-export default function Tabel({ theme }) {
+export default function Tabel() {
   const { data, error } = useSWR(
     "https://apicovid19indonesia-v2.vercel.app/api/indonesia/provinsi"
   );
-  const [tema, setTema] = useState(false);
-  useEffect(() => setTema(theme), [theme]);
+  const { isDark } = useContext(DarkModeContext);
 
   return (
     <section id="provinsi">
@@ -44,7 +44,7 @@ export default function Tabel({ theme }) {
         bordered
         hover
         responsive
-        variant={tema ? "dark" : "light"}
+        variant={isDark ? "dark" : "light"}
       >
         <thead>
           <tr>

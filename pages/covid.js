@@ -1,9 +1,9 @@
+import { useContext } from "react";
 import dynamic from "next/dynamic";
-import useDarkMode from "use-dark-mode";
 import Content from "../components/covid";
 import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../components/covid/GlobalStyles";
-import { darkTheme, lightTheme } from "../assets/data/Theme";
+import { DarkModeContext } from "../context/darkMode";
 import { exception } from "../utils/gtag";
 import { NextSeo } from "next-seo";
 import { SWRConfig } from "swr";
@@ -34,8 +34,7 @@ const description =
   "Informasi penyebaran virus corona di Indonesia dengan tampilan web dari Karya Ilmiah Remaja SMPN 13 Bekasi";
 
 export default function Covid() {
-  const dark = useDarkMode(false, { storageKey: null, onChange: null });
-  const theme = dark.value ? darkTheme : lightTheme;
+  const { theme, isDark } = useContext(DarkModeContext);
 
   return (
     <>
@@ -50,8 +49,11 @@ export default function Covid() {
             />
           ))}
 
-        <meta name="theme-color" content={dark.value ? "#323234" : "#f0efeb"} />
-        <link rel="preconnect" href="https://indonesia-covid-19.mathdro.id/" />
+        <meta name="theme-color" content={isDark ? "#323234" : "#f0efeb"} />
+        <link
+          rel="preconnect"
+          href="https://apicovid19indonesia-v2.vercel.app"
+        />
       </Head>
       <NextSeo
         title={title}
@@ -81,7 +83,7 @@ export default function Covid() {
       `}</style>
       <ThemeProvider theme={theme} prefetch={false}>
         <GlobalStyles />
-        <Navigasi dark={dark} />
+        <Navigasi />
         <SWRConfig
           value={{
             fetcher,
@@ -93,7 +95,7 @@ export default function Covid() {
             }
           }}
         >
-          <Content theme={dark.value} />
+          <Content />
         </SWRConfig>
       </ThemeProvider>
     </>

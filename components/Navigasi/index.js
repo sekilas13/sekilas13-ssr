@@ -1,21 +1,20 @@
+import { memo, useRef, useState, useContext, useCallback } from "react";
 import styles from "../../styles/navigasi/Navigasi.module.css";
-import { memo, useRef, useState, useCallback } from "react";
+import { DarkModeContext } from "../../context/darkMode";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 
-const NavLink = dynamic(() => import("./memoized").then((mod) => mod.NavLink));
-const FormSwitcher = dynamic(
-  () => import("./memoized").then((mod) => mod.FormSwitcher),
-  {
-    loading: () => <form style={{ height: "24px", width: "79px" }} />,
-    ssr: false
-  }
-);
+const NavLink = dynamic(() => import("./memoized/NavLink"));
+const FormSwitcher = dynamic(() => import("./memoized/FormSwitcher"), {
+  loading: () => <form style={{ height: "24px", width: "79px" }} />,
+  ssr: false
+});
 
-function Navigasi({ dark }) {
+function Navigasi() {
   const ref = useRef();
   const [expanded, setExpand] = useState(false);
+  const { isDark } = useContext(DarkModeContext);
 
   const expandClose = useCallback(() => setExpand(false), [expanded]);
   const getHeight = useCallback(
@@ -23,16 +22,12 @@ function Navigasi({ dark }) {
       ref.current ? ref.current.getBoundingClientRect().height : ref.current,
     [ref]
   );
-  const themeToggler = useCallback(
-    () => (dark.value ? dark.disable() : dark.enable()),
-    [dark]
-  );
 
   return (
     <Navbar
-      bg={!dark.value && "light"}
-      variant={dark.value ? "dark" : "light"}
-      className={dark.value && styles.darker}
+      bg={!isDark && "light"}
+      variant={isDark ? "dark" : "light"}
+      className={isDark && styles.darker}
       sticky="top"
       expand="lg"
       expanded={expanded}
@@ -50,15 +45,11 @@ function Navigasi({ dark }) {
             setExpandClose={expandClose}
             getHeight={getHeight}
           />
-          <FormSwitcher theme={dark.value} themeToggler={themeToggler} />
+          <FormSwitcher />
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
 }
 
-const compare = function (prevProps, nextProps) {
-  return JSON.stringify(prevProps) === JSON.stringify(nextProps);
-};
-
-export default memo(Navigasi, compare);
+export default memo(Navigasi);

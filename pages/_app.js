@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import * as gtag from "../utils/gtag";
 import { useRouter } from "next/router";
 import ProgressLoad from "../components/ProgressLoad";
+import DarkModeProvider from "../context/darkMode";
 
 export function reportWebVitals({ id, name, label, value }) {
   window.gtag("event", name, {
@@ -27,7 +28,7 @@ function MyApp({ Component, pageProps }) {
   }, [router.events]);
 
   return (
-    <>
+    <DarkModeProvider>
       <Head>
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="google-site-verification" content={gtag.GOOGLE_VERIF} />
@@ -35,7 +36,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <ProgressLoad />
       <Component {...pageProps} />
-    </>
+    </DarkModeProvider>
   );
 }
 

@@ -1,10 +1,10 @@
-import { darkTheme, lightTheme } from "../assets/data/Theme";
 import GlobalStyles from "../components/main/GlobalStyles";
+import { DarkModeContext } from "../context/darkMode";
 import { ThemeProvider } from "styled-components";
 import Content from "../components/main";
-import useDarkMode from "use-dark-mode";
 import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
+import { useContext } from "react";
 import Head from "next/head";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -33,9 +33,7 @@ const description =
   "Website resmi Karya Ilmiah Remaja SMPN 13 Bekasi. Karya Ilmiah Remaja ini adalah ekskul yang bertemakan tentang Sains dan Ilmu Pengetahuan Umum";
 
 export default function Home() {
-  const dark = useDarkMode(false, { storageKey: null, onChange: null });
-  const theme = dark.value ? darkTheme : lightTheme;
-
+  const { theme, isDark } = useContext(DarkModeContext);
   return (
     <>
       <Head>
@@ -68,7 +66,7 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
 
-        <meta name="theme-color" content={dark.value ? "#323234" : "#f0efeb"} />
+        <meta name="theme-color" content={isDark ? "#323234" : "#f0efeb"} />
       </Head>
       <NextSeo
         title={title}
@@ -98,8 +96,8 @@ export default function Home() {
       `}</style>
       <ThemeProvider theme={theme} prefetch={false}>
         <GlobalStyles />
-        <Navigasi dark={dark} />
-        <Content theme={dark.value} />
+        <Navigasi />
+        <Content />
       </ThemeProvider>
     </>
   );

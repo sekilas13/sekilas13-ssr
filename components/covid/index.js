@@ -1,12 +1,13 @@
+import { memo } from "react";
 import Container from "react-bootstrap/Container";
 import Tabel from "./Tabel";
 import Card from "./Card";
 
-export default function Covid({ theme }) {
-  return (
-    <Container fluid>
-      <Card />
-      <Tabel theme={theme} />
-    </Container>
-  );
-}
+const Covid = () => (
+  <Container fluid>
+    <Card />
+    <Tabel />
+  </Container>
+);
+
+export default memo(Covid);

@@ -1,12 +1,15 @@
-import { memo } from "react";
+import { memo, useContext } from "react";
 import Check from "react-bootstrap/FormCheck";
+import { DarkModeContext } from "../../../context/darkMode";
 
-function Switcher({ theme, themeToggler }) {
+function Switcher() {
+  const { isDark, themeToggler } = useContext(DarkModeContext);
+
   return (
     <Check
       type="switch"
       id="custom-switch"
-      checked={theme}
+      checked={isDark}
       onChange={themeToggler}
       label="&zwnj;"
     />

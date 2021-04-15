@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { memo, useState } from "react";
+import { memo, useMemo, useState } from "react";
 import Nav from "react-bootstrap/Nav";
 import Link from "next/link";
 
@@ -19,8 +19,8 @@ function NavLink({ getHeight, expanded, setExpandClose }) {
   const { pathname } = useRouter();
   const [key, setActiveKey] = useState();
 
-  const renderer = List[pathname];
-  const to = pathname === "/" ? "/covid" : "/";
+  const renderer = useMemo(() => List[pathname], [pathname]);
+  const to = useMemo(() => (pathname === "/" ? "/covid" : "/"), [pathname]);
 
   return (
     <Nav className="ml-auto text-center" activeKey={key}>

@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
 import { useSpring } from "react-spring";
-import { useRef, useEffect } from "react";
+import { memo, useRef, useEffect } from "react";
 import ProgressiveImage from "react-progressive-image";
 import { Jumbotron, Container, Row } from "react-bootstrap";
 import styles from "../../styles/main/Jumbotron.module.css";
@@ -26,7 +26,7 @@ const Paragrap = dynamic(() => import("./lazy/JumbonParagrap"), {
   loading: () => <p className={styles.paragrap}>Semangat KIR Tiga Belas !</p>
 });
 
-export default function JumbotronTop() {
+function JumbotronTop() {
   const ref = useRef();
   const [{ offset }, setOffset] = useSpring(() => ({ offset: 0 }));
 
@@ -66,3 +66,5 @@ export default function JumbotronTop() {
     </Jumbotron>
   );
 }
+
+export default memo(JumbotronTop);
