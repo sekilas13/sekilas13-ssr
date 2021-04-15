@@ -1,33 +1,33 @@
+const dummy = [...new Array(12)];
+
+const col = (type) =>
+  dummy.map((_, idx) => `col${type !== "" ? `-${type}-` : "-"}${++idx}`);
+
+const table = [
+  "table-responsive",
+  "table-light",
+  "table-dark",
+  "table-striped",
+  "table-bordered",
+  "table-hover"
+];
+
 const satuan = [
-  "justify-content-center",
   "show",
   "hide",
   "slide",
   "active",
+  "carousel",
+  "container-fluid",
   "collapsing",
-  "collapsed"
+  "collapsed",
+  "navbar-nav",
+  "navbar-dark",
+  "navbar-toggler-icon",
+  ...col("md"),
+  ...col("sm"),
+  ...col("lg"),
+  ...table
 ];
 
-module.exports = [
-  "navbar",
-  /^navbar-/,
-  "nav",
-  /^nav-/,
-  "form",
-  /^form-/,
-  "custom",
-  /^custom-/,
-  "collapse",
-  /^collapse-/,
-  "container",
-  /^container-/,
-  "col",
-  /^col-/,
-  "carousel",
-  /^carousel-/,
-  "card",
-  /^card-/,
-  "table",
-  /^table-/,
-  ...satuan
-];
+module.exports = [/^carousel-/, ...satuan];
