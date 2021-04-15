@@ -26,6 +26,7 @@ const PRELOAD_CSS = [
   "c65c62a6ff809d085b57.css", // Gambar.module.css
   "eb19916d289d060c1c49.css" // Footer.module.css
 ];
+const PRELOAD_LCP_IMG = "KIR-228-c7ad9295d87ea5f047a2312222929797.webp"; // KIR.png
 
 const title = "Karya Ilmiah Remaja SMP Negeri 13 Bekasi";
 const description =
@@ -53,6 +54,13 @@ export default function Home() {
           as="style"
           onLoad="this.onload=null;this.rel='stylesheet'"
         />
+        {process.env.isProduction && (
+          <link
+            rel="preload"
+            as="image"
+            href={"/_next/static/images/" + PRELOAD_LCP_IMG}
+          />
+        )}
         <link
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Eczar:wght@600&family=Roboto&family=Kufam&display=swap"
