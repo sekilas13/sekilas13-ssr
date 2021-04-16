@@ -61,6 +61,7 @@ module.exports = withPlugins(
     webpack: (config, { isServer }) => {
       if (isServer) {
         require("./scripts/sitemap-robots-generator")(env.PUBLIC_URL);
+        require("./scripts/noflash.minimizer")();
       }
       config.module.rules.push({
         test: /\.md$/,

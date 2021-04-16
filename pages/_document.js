@@ -49,6 +49,7 @@ export default class Root extends Document {
           />
         </Head>
         <body>
+          {process.env.isProduction && <script src="noflash.min.js" />}
           <Main />
           <NextScript />
         </body>
