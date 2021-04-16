@@ -1,18 +1,9 @@
 import Head from "next/head";
-import { useEffect } from "react";
+import { useEffect, memo } from "react";
 import * as gtag from "../utils/gtag";
 import { useRouter } from "next/router";
 import ProgressLoad from "../components/ProgressLoad";
 import DarkModeProvider from "../context/darkMode";
-
-export function reportWebVitals({ id, name, label, value }) {
-  window.gtag("event", name, {
-    event_category: label === "web-vital" ? "Web Vitals" : "Next.js metric",
-    value: Math.round(name === "CLS" ? value * 1000 : value),
-    event_label: id,
-    non_interaction: true
-  });
-}
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -36,8 +27,33 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <ProgressLoad />
       <Component {...pageProps} />
+      <style jsx global>{`
+        html {
+          font-family: "Roboto", sans-serif;
+          scroll-behavior: smooth;
+        }
+
+        body.light-mode {
+          background: #fff !important;
+          transition: all 0.2s linear;
+        }
+
+        body.dark-mode {
+          background: #242423 !important;
+          transition: all 0.2s linear;
+        }
+      `}</style>
     </DarkModeProvider>
   );
 }
 
-export default MyApp;
+export default memo(MyApp);
+
+export function reportWebVitals({ id, name, label, value }) {
+  window.gtag("event", name, {
+    event_category: label === "web-vital" ? "Web Vitals" : "Next.js metric",
+    value: Math.round(name === "CLS" ? value * 1000 : value),
+    event_label: id,
+    non_interaction: true
+  });
+}

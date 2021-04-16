@@ -75,12 +75,6 @@ export default function Covid() {
           site_name: "Sekilas 13"
         }}
       />
-      <style jsx global>{`
-        html {
-          font-family: "Roboto", sans-serif;
-          scroll-behavior: smooth;
-        }
-      `}</style>
       <ThemeProvider theme={theme} prefetch={false}>
         <GlobalStyles />
         <Navigasi />

@@ -88,12 +88,6 @@ export default function Home() {
           site_name: "Sekilas 13"
         }}
       />
-      <style jsx global>{`
-        html {
-          font-family: "Roboto", sans-serif;
-          scroll-behavior: smooth;
-        }
-      `}</style>
       <ThemeProvider theme={theme} prefetch={false}>
         <GlobalStyles />
         <Navigasi />
