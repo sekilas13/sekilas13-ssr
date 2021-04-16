@@ -5,14 +5,11 @@ import useDarkMode from "use-dark-mode";
 export const DarkModeContext = createContext({ value: false });
 
 export default function Provider(props) {
-  const dark = useDarkMode(false, { storageKey: null, onChange: null });
+  const dark = useDarkMode(false);
   const isDark = useMemo(() => dark.value, [dark]);
   const theme = useMemo(() => (isDark ? darkTheme : lightTheme), [isDark]);
 
-  const themeToggler = useCallback(
-    () => (dark.value ? dark.disable() : dark.enable()),
-    [dark]
-  );
+  const themeToggler = useCallback(() => void dark.toggle(), [dark]);
 
   const providerValue = useMemo(
     () => ({
