@@ -1,10 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
-  body {
-    background: ${({ theme }) => theme.jumbotron.bg} !important;
-    transition: all 0.2s linear;
-  }
   .jumbotron {
     background: ${({ theme }) => theme.jumbotron.bg} !important;
     color: ${({ theme }) => theme.jumbotron.color};
@@ -41,7 +37,7 @@ const GlobalStyles = createGlobalStyle`
         .arrow}' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
     transition: all 0.50s linear;
    }
-   
+
    .carousel-control-next-icon {
      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23${({
        theme
