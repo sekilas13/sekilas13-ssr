@@ -6,6 +6,7 @@ import { useContext } from "react";
 import { NextSeo } from "next-seo";
 import matter from "gray-matter";
 import Link from "next/link";
+import Head from "next/head";
 
 import style from "../../styles/blog/Posts.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -15,10 +16,13 @@ const description =
   "Daftar tulisan blog Karya Ilmiah Remaja SMP Negeri 13 Bekasi";
 
 export default function Blog({ data }) {
-  const { theme } = useContext(DarkModeContext);
+  const { theme, isDark } = useContext(DarkModeContext);
 
   return (
     <ThemeProvider theme={theme.Blog} prefetch={false}>
+      <Head>
+        <meta name="theme-color" content={isDark ? "#323234" : "#f0efeb"} />
+      </Head>
       <ArticleStyles />
       <NextSeo
         title={title}

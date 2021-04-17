@@ -41,13 +41,14 @@ export default function Read({
 }) {
   const { Judul, Deskripsi, Penulis } = data;
   const fullUrl = useMemo(() => process.env.PUBLIC_URL + "/blog/" + url);
-  const { theme } = useContext(DarkModeContext);
+  const { theme, isDark } = useContext(DarkModeContext);
 
   return (
     <ThemeProvider theme={theme.Blog} prefetch={false}>
       <ArticleStyles />
       <Head>
         <meta name="author" content={Penulis} />
+        <meta name="theme-color" content={isDark ? "#323234" : "#f0efeb"} />
       </Head>
       <NextSeo
         title={Judul}
