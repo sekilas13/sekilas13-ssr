@@ -19,7 +19,7 @@ export default function WrapperImg({ src, placeholder, alt }) {
                     opacity,
                     width: "100%",
                     filter: loading ? "blur(10px)" : "none",
-                    transition: "all 0.40s linear",
+                    transition: "all 0.40s linear"
                   }}
                   className={`${styles.gambar} img-fluid img-thumbnail mt-3`}
                 />

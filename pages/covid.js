@@ -75,7 +75,7 @@ export default function Covid() {
           site_name: "Sekilas 13"
         }}
       />
-      <ThemeProvider theme={theme} prefetch={false}>
+      <ThemeProvider theme={theme.nonBlog} prefetch={false}>
         <GlobalStyles />
         <Navigasi />
         <SWRConfig

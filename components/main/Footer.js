@@ -9,7 +9,7 @@ const Email = dynamic(() => import("./lazy/FooterEmail"), {
       Ada pertanyaan ? Tanyakan lewat email{" "}
       <a href="mailto:smpn13kir@gmail.com">smpn13kir@gmail.com</a>
     </p>
-  ),
+  )
 });
 
 const Info = dynamic(() => import("./lazy/FooterInfo"), {
@@ -25,7 +25,7 @@ const Info = dynamic(() => import("./lazy/FooterInfo"), {
       </a>{" "}
       SMP Negeri 13 Bekasi | {new Date().getFullYear()}
     </p>
-  ),
+  )
 });
 
 export default function Footer() {

@@ -16,7 +16,7 @@ export default function FooterInfo() {
             enter={Enter}
             leave={Leave}
             config={{
-              duration: 750,
+              duration: 750
             }}
           >
             {(show) =>

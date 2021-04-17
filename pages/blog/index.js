@@ -1,4 +1,8 @@
+import ArticleStyles from "../../components/blog/ArticleStyles";
 import { Container, Row, Col, Card } from "react-bootstrap";
+import { DarkModeContext } from "../../context/darkMode";
+import { ThemeProvider } from "styled-components";
+import { useContext } from "react";
 import { NextSeo } from "next-seo";
 import matter from "gray-matter";
 import Link from "next/link";
@@ -11,8 +15,11 @@ const description =
   "Daftar tulisan blog Karya Ilmiah Remaja SMP Negeri 13 Bekasi";
 
 export default function Blog({ data }) {
+  const { theme } = useContext(DarkModeContext);
+
   return (
-    <>
+    <ThemeProvider theme={theme.Blog} prefetch={false}>
+      <ArticleStyles />
       <NextSeo
         title={title}
         description={description}
@@ -55,7 +62,7 @@ export default function Blog({ data }) {
           ))}
         </Row>
       </Container>
-    </>
+    </ThemeProvider>
   );
 }
 

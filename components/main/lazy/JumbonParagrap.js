@@ -8,7 +8,7 @@ export default function JumbonImg({ offset }) {
     <animated.p
       style={{
         transform: offset.interpolate(calc3),
-        overflow: "hidden",
+        overflow: "hidden"
       }}
       className={styles.paragrap}
     >

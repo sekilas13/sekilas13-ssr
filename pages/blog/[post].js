@@ -1,6 +1,10 @@
 import fs from "fs";
 import dynamic from "next/dynamic";
+import ArticleStyles from "../../components/blog/ArticleStyles";
+import { DarkModeContext } from "../../context/darkMode";
+import { ThemeProvider } from "styled-components";
 import { BlogJsonLd, NextSeo } from "next-seo";
+import { useContext, useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import moment from "moment-timezone";
 import matter from "gray-matter";
@@ -36,10 +40,12 @@ export default function Read({
   tanggalDiubah
 }) {
   const { Judul, Deskripsi, Penulis } = data;
-  const fullUrl = process.env.PUBLIC_URL + "/blog/" + url;
+  const fullUrl = useMemo(() => process.env.PUBLIC_URL + "/blog/" + url);
+  const { theme } = useContext(DarkModeContext);
 
   return (
-    <>
+    <ThemeProvider theme={theme.Blog} prefetch={false}>
+      <ArticleStyles />
       <Head>
         <meta name="author" content={Penulis} />
       </Head>
@@ -93,7 +99,7 @@ export default function Read({
           }
         }
       `}</style>
-    </>
+    </ThemeProvider>
   );
 }
 

@@ -8,7 +8,7 @@ export default function JumbonImg({ offset }) {
     <animated.h1
       style={{
         transform: offset.interpolate(calc2),
-        overflow: "hidden",
+        overflow: "hidden"
       }}
       className={styles.hasatu}
     >
