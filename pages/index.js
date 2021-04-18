@@ -1,6 +1,5 @@
 import GlobalStyles from "../components/main/GlobalStyles";
 import { DarkModeContext } from "../context/darkMode";
-import { ThemeProvider } from "styled-components";
 import Content from "../components/main";
 import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
@@ -33,7 +32,7 @@ const description =
   "Website resmi Karya Ilmiah Remaja SMPN 13 Bekasi. Karya Ilmiah Remaja ini adalah ekskul yang bertemakan tentang Sains dan Ilmu Pengetahuan Umum";
 
 export default function Home() {
-  const { theme, isDark } = useContext(DarkModeContext);
+  const { isDark } = useContext(DarkModeContext);
   return (
     <>
       <Head>
@@ -88,11 +87,9 @@ export default function Home() {
           site_name: "Sekilas 13"
         }}
       />
-      <ThemeProvider theme={theme.nonBlog} prefetch={false}>
-        <GlobalStyles />
-        <Navigasi />
-        <Content />
-      </ThemeProvider>
+      <GlobalStyles />
+      <Navigasi />
+      <Content />
     </>
   );
 }

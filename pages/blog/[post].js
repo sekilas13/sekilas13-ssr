@@ -2,7 +2,6 @@ import fs from "fs";
 import dynamic from "next/dynamic";
 import ArticleStyles from "../../components/blog/ArticleStyles";
 import { DarkModeContext } from "../../context/darkMode";
-import { ThemeProvider } from "styled-components";
 import { BlogJsonLd, NextSeo } from "next-seo";
 import { useContext, useMemo } from "react";
 import ReactMarkdown from "react-markdown";
@@ -44,7 +43,7 @@ export default function Read({
   const { theme, isDark } = useContext(DarkModeContext);
 
   return (
-    <ThemeProvider theme={theme.Blog} prefetch={false}>
+    <>
       <ArticleStyles />
       <Head>
         <meta name="author" content={Penulis} />
@@ -100,7 +99,7 @@ export default function Read({
           }
         }
       `}</style>
-    </ThemeProvider>
+    </>
   );
 }
 

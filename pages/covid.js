@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import dynamic from "next/dynamic";
 import Content from "../components/covid";
-import { ThemeProvider } from "styled-components";
 import GlobalStyles from "../components/covid/GlobalStyles";
 import { DarkModeContext } from "../context/darkMode";
 import { exception } from "../utils/gtag";
@@ -75,23 +74,22 @@ export default function Covid() {
           site_name: "Sekilas 13"
         }}
       />
-      <ThemeProvider theme={theme.nonBlog} prefetch={false}>
-        <GlobalStyles />
-        <Navigasi />
-        <SWRConfig
-          value={{
-            fetcher,
-            onError: (error) => {
-              exception({
-                error: error.message,
-                fatal: false
-              });
-            }
-          }}
-        >
-          <Content />
-        </SWRConfig>
-      </ThemeProvider>
+
+      <GlobalStyles />
+      <Navigasi />
+      <SWRConfig
+        value={{
+          fetcher,
+          onError: (error) => {
+            exception({
+              error: error.message,
+              fatal: false
+            });
+          }
+        }}
+      >
+        <Content />
+      </SWRConfig>
     </>
   );
 }

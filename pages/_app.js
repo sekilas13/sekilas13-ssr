@@ -1,23 +1,10 @@
 import Head from "next/head";
-import { useEffect, memo } from "react";
+import { memo } from "react";
 import * as gtag from "../utils/gtag";
-import { useRouter } from "next/router";
 import ProgressLoad from "../components/ProgressLoad";
 import DarkModeProvider from "../context/darkMode";
 
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
-
-  useEffect(() => {
-    const handleRouteChange = (url) => {
-      gtag.pageview(url);
-    };
-    router.events.on("routeChangeComplete", handleRouteChange);
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, [router.events]);
-
   return (
     <DarkModeProvider>
       <Head>

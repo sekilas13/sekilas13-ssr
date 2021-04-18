@@ -1,7 +1,6 @@
 import ArticleStyles from "../../components/blog/ArticleStyles";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { DarkModeContext } from "../../context/darkMode";
-import { ThemeProvider } from "styled-components";
 import { useContext } from "react";
 import { NextSeo } from "next-seo";
 import matter from "gray-matter";
@@ -16,10 +15,10 @@ const description =
   "Daftar tulisan blog Karya Ilmiah Remaja SMP Negeri 13 Bekasi";
 
 export default function Blog({ data }) {
-  const { theme, isDark } = useContext(DarkModeContext);
+  const { isDark } = useContext(DarkModeContext);
 
   return (
-    <ThemeProvider theme={theme.Blog} prefetch={false}>
+    <>
       <Head>
         <meta name="theme-color" content={isDark ? "#323234" : "#f0efeb"} />
       </Head>
@@ -66,7 +65,7 @@ export default function Blog({ data }) {
           ))}
         </Row>
       </Container>
-    </ThemeProvider>
+    </>
   );
 }
 
