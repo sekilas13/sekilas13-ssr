@@ -1,4 +1,3 @@
-import GlobalStyles from "../components/main/GlobalStyles";
 import { DarkModeContext } from "../context/darkMode";
 import Content from "../components/main";
 import { NextSeo } from "next-seo";
@@ -87,7 +86,6 @@ export default function Home() {
           site_name: "Sekilas 13"
         }}
       />
-      <GlobalStyles />
       <Navigasi />
       <Content />
     </>

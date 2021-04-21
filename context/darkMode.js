@@ -5,10 +5,24 @@ import { ThemeProvider } from "styled-components";
 import { useRouter } from "next/router";
 import useDarkMode from "use-dark-mode";
 import * as gtag from "../utils/gtag";
+import dynamic from "next/dynamic";
+
+const GlobalStylesMain = dynamic(
+  () => import("../components/main/GlobalStyles"),
+  { ssr: false }
+);
+const GlobalStylesCovid = dynamic(
+  () => import("../components/covid/GlobalStyles"),
+  { ssr: false }
+);
+const ArticleStyles = dynamic(
+  () => import("../components/blog/ArticleStyles"),
+  { ssr: false }
+);
 
 export const DarkModeContext = createContext({ value: false });
 
-export default function Provider(props) {
+export default function Provider({ children }) {
   const router = useRouter();
   const dark = useDarkMode(false);
   const isDark = useMemo(() => dark.value, [dark]);
@@ -24,10 +38,20 @@ export default function Provider(props) {
       case "/covid":
       case "/":
         return themeNonBlog;
-        break;
       case "/blog":
       default:
         return themeBlog;
+    }
+  }, [router, isDark]);
+  const GlobalStyles = useMemo(() => {
+    switch (router.pathname) {
+      case "/":
+        return GlobalStylesMain;
+      case "/covid":
+        return GlobalStylesCovid;
+      case "/blog":
+      default:
+        return ArticleStyles;
     }
   }, [router]);
   const providerValue = useMemo(
@@ -51,7 +75,10 @@ export default function Provider(props) {
 
   return (
     <DarkModeContext.Provider value={providerValue}>
-      <ThemeProvider theme={theme} prefetch={false} {...props} />
+      <ThemeProvider theme={theme} prefetch={false}>
+        <GlobalStyles />
+        {children}
+      </ThemeProvider>
     </DarkModeContext.Provider>
   );
 }

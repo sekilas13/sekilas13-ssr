@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import dynamic from "next/dynamic";
 import Content from "../components/covid";
-import GlobalStyles from "../components/covid/GlobalStyles";
 import { DarkModeContext } from "../context/darkMode";
 import { exception } from "../utils/gtag";
 import { NextSeo } from "next-seo";
@@ -74,8 +73,6 @@ export default function Covid() {
           site_name: "Sekilas 13"
         }}
       />
-
-      <GlobalStyles />
       <Navigasi />
       <SWRConfig
         value={{

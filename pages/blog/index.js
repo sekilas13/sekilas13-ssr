@@ -1,4 +1,3 @@
-import ArticleStyles from "../../components/blog/ArticleStyles";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { DarkModeContext } from "../../context/darkMode";
 import { useContext } from "react";
@@ -22,7 +21,6 @@ export default function Blog({ data }) {
       <Head>
         <meta name="theme-color" content={isDark ? "#323234" : "#f0efeb"} />
       </Head>
-      <ArticleStyles />
       <NextSeo
         title={title}
         description={description}

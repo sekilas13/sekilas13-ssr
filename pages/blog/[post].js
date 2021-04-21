@@ -1,6 +1,5 @@
 import fs from "fs";
 import dynamic from "next/dynamic";
-import ArticleStyles from "../../components/blog/ArticleStyles";
 import { DarkModeContext } from "../../context/darkMode";
 import { BlogJsonLd, NextSeo } from "next-seo";
 import { useContext, useMemo } from "react";
@@ -44,7 +43,6 @@ export default function Read({
 
   return (
     <>
-      <ArticleStyles />
       <Head>
         <meta name="author" content={Penulis} />
         <meta name="theme-color" content={isDark ? "#323234" : "#f0efeb"} />
