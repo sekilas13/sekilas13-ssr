@@ -1,9 +1,9 @@
 import dynamic from "next/dynamic";
 import { useSpring } from "react-spring";
-import { memo, useRef, useEffect } from "react";
-import ProgressiveImage from "react-progressive-image";
 import { Jumbotron, Container, Row } from "react-bootstrap";
 import styles from "../../styles/main/Jumbotron.module.css";
+import { memo, useRef, useCallback, useEffect } from "react";
+import useProgressiveImage from "./hooks/useProgressiveImage";
 import { source, placeholder } from "../../assets/data/GambarJumbotron";
 
 const Img = dynamic(() => import("./lazy/JumbonImg"), {
@@ -28,33 +28,34 @@ const Paragrap = dynamic(() => import("./lazy/JumbonParagrap"), {
 
 function JumbotronTop() {
   const ref = useRef();
+  const { src, loading, onChangeVisible } = useProgressiveImage({
+    srcTujuan: source,
+    placeholder
+  });
   const [{ offset }, setOffset] = useSpring(() => ({ offset: 0 }));
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     if (ref.current) {
       const posY = ref.current.getBoundingClientRect().top;
       const offset = window.pageYOffset - posY;
       setOffset({ offset });
     }
-  };
+  }, [ref]);
 
   useEffect(() => {
+    onChangeVisible(true);
     window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  });
+  }, []);
 
   return (
     <Jumbotron fluid className={styles.jumbotron} ref={ref}>
       <Container className={styles.container}>
         <Row className="justify-content-center">
-          <ProgressiveImage src={source} placeholder={placeholder}>
-            {(src, loading) => (
-              <Img src={src} loading={loading} offset={offset} />
-            )}
-          </ProgressiveImage>
+          <Img src={src} loading={loading} offset={offset} />
         </Row>
         <Row className="justify-content-center">
           <Hasatu offset={offset} />
