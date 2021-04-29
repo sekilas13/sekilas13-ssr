@@ -2,7 +2,7 @@ import { createCanvas } from "canvas";
 
 export default function handler(req, res) {
   const {
-    query: { param },
+    query: { param }
   } = req;
 
   const width = Number(param[0]);
