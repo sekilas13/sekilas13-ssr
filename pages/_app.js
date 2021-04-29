@@ -1,10 +1,10 @@
 import Head from "next/head";
-import { memo } from "react";
+import { memo, useContext } from "react";
 import * as gtag from "../utils/gtag";
 import ProgressLoad from "../components/ProgressLoad";
-import DarkModeProvider from "../context/darkMode";
+import DarkModeProvider, { DarkModeContext } from "../context/darkMode";
 
-function MyApp({ Component, pageProps }) {
+function MyApp(props) {
   return (
     <DarkModeProvider>
       <Head>
@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
         <meta name="theme-color" content="#f0efeb" />
       </Head>
       <ProgressLoad />
-      <Component {...pageProps} />
+      <ThemeColorSetter {...props} />
       <style jsx global>{`
         html {
           font-family: "Roboto", sans-serif;
@@ -31,6 +31,19 @@ function MyApp({ Component, pageProps }) {
         }
       `}</style>
     </DarkModeProvider>
+  );
+}
+
+function ThemeColorSetter({ Component, pageProps }) {
+  const { isDark } = useContext(DarkModeContext);
+
+  return (
+    <>
+      <Head>
+        <meta name="theme-color" content={isDark ? "#323234" : "#f0efeb"} />
+      </Head>
+      <Component {...pageProps} />
+    </>
   );
 }
 

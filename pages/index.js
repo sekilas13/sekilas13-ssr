@@ -1,4 +1,3 @@
-import { DarkModeContext } from "../context/darkMode";
 import Content from "../components/main";
 import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
@@ -21,8 +20,7 @@ const PRELOAD_CSS = [
   "b337d7e4fd55d8158c57.css", // Statistik.module.css
   "bff4e0b56d744a9baaee.css", // Navigasi.module.css
   "83a97b3f0d7136785509.css", // KataOrang.module.css
-  "c65c62a6ff809d085b57.css", // Gambar.module.css
-  "eb19916d289d060c1c49.css" // Footer.module.css
+  "c65c62a6ff809d085b57.css" // Gambar.module.css
 ];
 const PRELOAD_LCP_IMG = "KIR-228-c7ad9295d87ea5f047a2312222929797.webp"; // KIR.png
 
@@ -31,7 +29,6 @@ const description =
   "Website resmi Karya Ilmiah Remaja SMPN 13 Bekasi. Karya Ilmiah Remaja ini adalah ekskul yang bertemakan tentang Sains dan Ilmu Pengetahuan Umum";
 
 export default function Home() {
-  const { isDark } = useContext(DarkModeContext);
   return (
     <>
       <Head>
@@ -63,8 +60,6 @@ export default function Home() {
         />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-
-        <meta name="theme-color" content={isDark ? "#323234" : "#f0efeb"} />
       </Head>
       <NextSeo
         title={title}

@@ -1,6 +1,5 @@
 import fs from "fs";
 import dynamic from "next/dynamic";
-import { DarkModeContext } from "../../context/darkMode";
 import { BlogJsonLd, NextSeo } from "next-seo";
 import { useContext, useMemo } from "react";
 import ReactMarkdown from "react-markdown";
@@ -39,13 +38,11 @@ export default function Read({
 }) {
   const { Judul, Deskripsi, Penulis } = data;
   const fullUrl = useMemo(() => process.env.PUBLIC_URL + "/blog/" + url);
-  const { theme, isDark } = useContext(DarkModeContext);
 
   return (
     <>
       <Head>
         <meta name="author" content={Penulis} />
-        <meta name="theme-color" content={isDark ? "#323234" : "#f0efeb"} />
       </Head>
       <NextSeo
         title={Judul}

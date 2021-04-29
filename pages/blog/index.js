@@ -1,10 +1,8 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
-import { DarkModeContext } from "../../context/darkMode";
 import { useContext } from "react";
 import { NextSeo } from "next-seo";
 import matter from "gray-matter";
 import Link from "next/link";
-import Head from "next/head";
 
 import style from "../../styles/blog/Posts.module.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -14,13 +12,8 @@ const description =
   "Daftar tulisan blog Karya Ilmiah Remaja SMP Negeri 13 Bekasi";
 
 export default function Blog({ data }) {
-  const { isDark } = useContext(DarkModeContext);
-
   return (
     <>
-      <Head>
-        <meta name="theme-color" content={isDark ? "#323234" : "#f0efeb"} />
-      </Head>
       <NextSeo
         title={title}
         description={description}

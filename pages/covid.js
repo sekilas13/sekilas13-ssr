@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import dynamic from "next/dynamic";
 import Content from "../components/covid";
-import { DarkModeContext } from "../context/darkMode";
 import { exception } from "../utils/gtag";
 import { NextSeo } from "next-seo";
 import { SWRConfig } from "swr";
@@ -32,8 +31,6 @@ const description =
   "Informasi penyebaran virus corona di Indonesia dengan tampilan web dari Karya Ilmiah Remaja SMPN 13 Bekasi";
 
 export default function Covid() {
-  const { theme, isDark } = useContext(DarkModeContext);
-
   return (
     <>
       <Head>
@@ -46,8 +43,6 @@ export default function Covid() {
               key={css}
             />
           ))}
-
-        <meta name="theme-color" content={isDark ? "#323234" : "#f0efeb"} />
         <link
           rel="preconnect"
           href="https://apicovid19indonesia-v2.vercel.app"
