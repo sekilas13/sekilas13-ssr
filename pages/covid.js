@@ -6,8 +6,11 @@ import { NextSeo } from "next-seo";
 import { SWRConfig } from "swr";
 import Head from "next/head";
 import fetch from "axios";
+import DEF_SEO from "../config/seo.config";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+
+const PageSEO = DEF_SEO.pages.covid;
 
 const Navigasi = dynamic(() => import("../components/Navigasi"), {
   loading: () => (
@@ -25,10 +28,6 @@ const PRELOAD_CSS = [
 ];
 
 const fetcher = (...args) => fetch(...args).then((res) => res.data);
-
-const title = "Informasi Covid 19 | Sekilas 13";
-const description =
-  "Informasi penyebaran virus corona di Indonesia dengan tampilan web dari Karya Ilmiah Remaja SMPN 13 Bekasi";
 
 export default function Covid() {
   return (
@@ -49,24 +48,10 @@ export default function Covid() {
         />
       </Head>
       <NextSeo
-        title={title}
-        description={description}
-        canonical={`${process.env.PUBLIC_URL}/covid`}
-        openGraph={{
-          url: `${process.env.PUBLIC_URL}/covid`,
-          title,
-          description,
-          type: "website",
-          images: [
-            {
-              url: `${process.env.PUBLIC_URL}/ogp-img.png`,
-              width: 256,
-              height: 256,
-              alt: "KIR Open Graph"
-            }
-          ],
-          site_name: "Sekilas 13"
-        }}
+        title={PageSEO.title}
+        description={PageSEO.description}
+        canonical={PageSEO.canonical}
+        openGraph={PageSEO.opg}
       />
       <Navigasi />
       <SWRConfig

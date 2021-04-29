@@ -3,8 +3,11 @@ import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
 import { useContext } from "react";
 import Head from "next/head";
+import DEF_SEO from "../config/seo.config";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+
+const PageSEO = DEF_SEO.pages.index;
 
 const Navigasi = dynamic(() => import("../components/Navigasi"), {
   loading: () => (
@@ -23,10 +26,6 @@ const PRELOAD_CSS = [
   "c65c62a6ff809d085b57.css" // Gambar.module.css
 ];
 const PRELOAD_LCP_IMG = "KIR-228-c7ad9295d87ea5f047a2312222929797.webp"; // KIR.png
-
-const title = "Karya Ilmiah Remaja SMP Negeri 13 Bekasi";
-const description =
-  "Website resmi Karya Ilmiah Remaja SMPN 13 Bekasi. Karya Ilmiah Remaja ini adalah ekskul yang bertemakan tentang Sains dan Ilmu Pengetahuan Umum";
 
 export default function Home() {
   return (
@@ -62,24 +61,10 @@ export default function Home() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
       </Head>
       <NextSeo
-        title={title}
-        description={description}
-        canonical={process.env.PUBLIC_URL}
-        openGraph={{
-          url: process.env.PUBLIC_URL,
-          title,
-          description,
-          type: "website",
-          images: [
-            {
-              url: `${process.env.PUBLIC_URL}/ogp-img.png`,
-              width: 256,
-              height: 256,
-              alt: "KIR Open Graph"
-            }
-          ],
-          site_name: "Sekilas 13"
-        }}
+        title={PageSEO.title}
+        description={PageSEO.description}
+        canonical={PageSEO.canonical}
+        openGraph={PageSEO.opg}
       />
       <Navigasi />
       <Content />
