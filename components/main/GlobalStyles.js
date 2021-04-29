@@ -4,7 +4,7 @@ const GlobalStyles = createGlobalStyle`
   .jumbotron {
     background: ${({ theme }) => theme.jumbotron.bg} !important;
     color: ${({ theme }) => theme.jumbotron.color};
-    transition: all 0.50s linear;
+    transition: all 0.20s linear;
   }
   .deskripsi {
     background: ${({ theme }) => theme.deskripsi.bg} !important;
