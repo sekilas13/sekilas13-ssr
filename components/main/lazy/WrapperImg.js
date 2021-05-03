@@ -1,7 +1,7 @@
 import useProgressiveImage from "../hooks/useProgressiveImage";
 import styles from "../../../styles/main/Gambar.module.css";
 import VisibilitySensor from "react-visibility-sensor";
-import { Spring } from "react-spring/renderprops";
+import { Spring } from "react-spring/renderprops.cjs";
 import { Image } from "react-bootstrap";
 
 export default function WrapperImg({ src: srcTujuan, placeholder, alt }) {

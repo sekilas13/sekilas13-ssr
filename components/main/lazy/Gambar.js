@@ -1,14 +1,22 @@
-import SimpleReactLightbox, { SRLWrapper } from "simple-react-lightbox";
 import { Row, Container, Col } from "react-bootstrap";
 import gambar from "../../../assets/data/Gambar";
 import dynamic from "next/dynamic";
+import Wrapper from "./WrapperImg";
 
-const Wrapper = dynamic(() => import("./WrapperImg"));
+const DynamicSRL = dynamic(() => import("simple-react-lightbox"), {
+  loading: ({ children: Child }) => <Child />
+});
+const DynamicSRLWrapper = dynamic(
+  () => import("simple-react-lightbox").then((module) => module.SRLWrapper),
+  {
+    loading: ({ children: Child }) => <Child />
+  }
+);
 
 export default function Gambar() {
   return (
-    <SimpleReactLightbox>
-      <SRLWrapper>
+    <DynamicSRL>
+      <DynamicSRLWrapper>
         <Container className="pt-4">
           <Row>
             {gambar.map((g, i) => (
@@ -18,7 +26,7 @@ export default function Gambar() {
             ))}
           </Row>
         </Container>
-      </SRLWrapper>
-    </SimpleReactLightbox>
+      </DynamicSRLWrapper>
+    </DynamicSRL>
   );
 }
