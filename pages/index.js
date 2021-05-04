@@ -22,8 +22,7 @@ const Navigasi = dynamic(() => import("../components/Navigasi"), {
 const PRELOAD_CSS = [
   "b337d7e4fd55d8158c57.css", // Statistik.module.css
   "bff4e0b56d744a9baaee.css", // Navigasi.module.css
-  "83a97b3f0d7136785509.css", // KataOrang.module.css
-  "c65c62a6ff809d085b57.css" // Gambar.module.css
+  "83a97b3f0d7136785509.css" // KataOrang.module.css
 ];
 const PRELOAD_LCP_IMG = "KIR-228-c7ad9295d87ea5f047a2312222929797.webp"; // KIR.png
 
