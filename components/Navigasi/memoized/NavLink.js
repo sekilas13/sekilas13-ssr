@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { memo, useMemo, useState } from "react";
 import Nav from "react-bootstrap/Nav";
 import Link from "next/link";
+import styles from "../../../styles/navigasi/Navigasi.module.css";
 
 const List = {
   "/": [
@@ -23,7 +24,7 @@ function NavLink({ getHeight, expanded, setExpandClose }) {
   const to = useMemo(() => (pathname === "/" ? "/covid" : "/"), [pathname]);
 
   return (
-    <Nav className="ml-auto text-center" activeKey={key}>
+    <Nav className={`ml-auto text-center ${styles.navitem}`} activeKey={key}>
       {renderer && (
         <>
           <Link href={to} passHref>

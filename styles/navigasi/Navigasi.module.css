@@ -1,3 +1,14 @@
 .darker {
   background-color: #333533;
 }
+
+.brand {
+  font-family: "Lato", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.navitem > * {
+  font-family: "Oxygen", sans-serif;
+}

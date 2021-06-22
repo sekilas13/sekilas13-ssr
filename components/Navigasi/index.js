@@ -4,6 +4,9 @@ import { DarkModeContext } from "../../context/darkMode";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import Image from "next/image";
+
+const LogoKIR = require("../../assets/Img/KIR/KIR.png?resize&size=85&format=webp");
 
 const NavLink = dynamic(() => import("./memoized/NavLink"));
 const FormSwitcher = dynamic(() => import("./memoized/FormSwitcher"), {
@@ -36,7 +39,9 @@ function Navigasi() {
     >
       <Container>
         <Link href="/" passHref>
-          <Navbar.Brand>KIR</Navbar.Brand>
+          <Navbar.Brand className={styles.brand}>
+            <img src={LogoKIR} width={27} height={28.31} /> Karya Ilmiah Remaja
+          </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="navigasi-nav" />
         <Navbar.Collapse id="navigasi-nav">
