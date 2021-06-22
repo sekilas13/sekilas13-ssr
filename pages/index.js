@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useContext } from "react";
 import Head from "next/head";
 import DEF_SEO from "../config/seo.config";
+import Font from "../components/Font";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -39,12 +40,6 @@ export default function Home() {
               key={css}
             />
           ))}
-        <link
-          rel="preload"
-          href="https://fonts.googleapis.com/css2?family=Eczar:wght@600&family=Roboto&family=Kufam&display=swap"
-          as="style"
-          onLoad="this.onload=null;this.rel='stylesheet'"
-        />
         {process.env.isProduction && (
           <link
             rel="preload"
@@ -52,12 +47,7 @@ export default function Home() {
             href={"/_next/static/images/" + PRELOAD_LCP_IMG}
           />
         )}
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Eczar:wght@600&family=Roboto&family=Kufam&display=swap"
-        />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <Font family="family=Lato:ital@1&family=Mate+SC&family=Open+Sans&family=Oxygen&family=Poppins" />
       </Head>
       <NextSeo
         title={PageSEO.title}

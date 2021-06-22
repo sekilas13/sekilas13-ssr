@@ -6,6 +6,7 @@ import { NextSeo } from "next-seo";
 import { SWRConfig } from "swr";
 import Head from "next/head";
 import fetch from "axios";
+import Font from "../components/Font";
 import DEF_SEO from "../config/seo.config";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -42,6 +43,7 @@ export default function Covid() {
               key={css}
             />
           ))}
+        <Font family="family=Lato:ital@1&family=Open+Sans" />
         <link
           rel="preconnect"
           href="https://apicovid19indonesia-v2.vercel.app"
