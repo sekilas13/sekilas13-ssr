@@ -1,6 +1,6 @@
 export const lightTheme = {
   jumbotron: {
-    bg: "#FFF"
+    bg: "#2c91fb"
   },
   deskripsi: {
     bg: " #fdfffc",
