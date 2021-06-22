@@ -1,70 +1,42 @@
 .jumbotron {
   height: 100vh;
-  background-size: cover;
+  background-color: #2c91fb;
+  padding: 1rem !important;
+  align-items: center;
+  display: flex;
 }
 
-.container {
-  margin: 20px auto;
+.colText {
+  margin-top: -5.5rem;
 }
 
-.gambar {
-  width: 20%;
+.colText > * {
+  color: white;
 }
 
-.hasatu {
-  font-size: 2.9rem;
-  font-family: "Eczar", serif;
+.welcome {
+  font-family: "Open Sans", sans-serif;
   font-weight: 600;
+  font-size: 3rem;
+  line-height: 65px;
+  padding-bottom: 0.25rem;
+  width: 5rem;
 }
 
-.paragrap {
-  font-size: 1.8rem;
+.diWebsite {
+  font-family: "Mate SC", serif;
+  font-size: 1.3rem;
+  line-height: 29px;
 }
 
-@media (max-width: 576px) {
-  .container {
-    margin: 100px auto;
-  }
-
-  .gambar {
-    width: 35%;
-  }
-
-  .hasatu {
-    font-size: 2.4rem;
-  }
-
-  .paragrap {
-    font-size: 1.4rem;
-  }
+.eskul {
+  padding-top: 1rem;
 }
 
-@media (min-width: 576px) and (max-width: 767.98px) {
-  .container {
-    margin: 80px auto;
-  }
-
-  .gambar {
-    width: 29%;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 991.98px) {
-  .container {
-    margin: 60px auto;
-  }
-
-  .gambar {
-    width: 28%;
-  }
-}
-
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  .container {
-    margin: 50px auto;
-  }
-
-  .gambar {
-    width: 22%;
-  }
+.eskul,
+.school {
+  font-family: "Oxygen", sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 25.25px;
 }
