@@ -28,9 +28,8 @@ function Navigasi() {
 
   return (
     <Navbar
-      bg={!isDark && "light"}
       variant={isDark ? "dark" : "light"}
-      className={isDark && styles.darker}
+      className={isDark ? styles.darker : styles.light}
       sticky="top"
       expand="lg"
       expanded={expanded}
