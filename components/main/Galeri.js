@@ -5,7 +5,7 @@ const Content = dynamic(() => import("./lazy/Gambar"));
 
 export default function Gambar() {
   return (
-    <section className="gambar" id={styles.gambar}>
+    <section className="galeri" id={styles.gambar}>
       <Content />
     </section>
   );

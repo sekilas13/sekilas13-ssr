@@ -4,16 +4,16 @@ import dynamic from "next/dynamic";
 import JumbotronTop from "./JumbotronTop";
 import Deskripsi from "./Deskripsi";
 import Footer from "./Footer";
-import Gambar from "./Gambar";
+import Galeri from "./Galeri";
 
 const KataOrang = dynamic(() => import("./KataOrang"), { ssr: false });
 
 const main = () => (
   <>
-    <JumbotronTop prefetch={false} />
+    <JumbotronTop />
     <Deskripsi />
     <KataOrang />
-    <Gambar />
+    <Galeri />
     <Footer />
   </>
 );

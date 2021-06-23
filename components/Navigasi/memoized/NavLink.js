@@ -8,7 +8,7 @@ const List = {
   "/": [
     { nama: "Deskripsi", to: ".deskripsi" },
     { nama: "Pandangan Orang", to: ".KataOrang" },
-    { nama: "Gambar", to: ".gambar" }
+    { nama: "Galeri", to: ".galeri" }
   ],
   "/covid": [
     { nama: "Kondisi Terkini", to: "#all" },
