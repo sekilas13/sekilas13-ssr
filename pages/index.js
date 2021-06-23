@@ -25,7 +25,7 @@ const PRELOAD_CSS = [
   "bff4e0b56d744a9baaee.css", // Navigasi.module.css
   "83a97b3f0d7136785509.css" // KataOrang.module.css
 ];
-const PRELOAD_LCP_IMG = "KIR-228-c7ad9295d87ea5f047a2312222929797.webp"; // KIR.png
+const PRELOAD_LCP_IMG = "KIR-85-85492676b7dc6de64364e26b149588bf.webp"; // KIR.png
 
 export default function Home() {
   return (
