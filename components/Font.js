@@ -7,7 +7,7 @@ const Font = ({ family }) => (
       crossOrigin="true"
     />
     <link
-      href={`https://fonts.googleapis.com/css2?&${family}display=swap`}
+      href={`https://fonts.googleapis.com/css2?&${family}&display=swap`}
       rel="stylesheet"
     />
   </>
